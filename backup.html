@@ -1,0 +1,115 @@
+    <div class="container">
+      <header class="row">
+        <h1 class="col-sm-12">Título desta aba</h1>
+        <p class="col-sm-12">Sub-título do questionário</p>
+      </header>
+      
+      <!-- blue panel with bound values after data entry -->
+      <section class="row panel-body bg-primary" ng-show="false">
+        <div class="col-sm-12">
+          <h4>Field values from model-binding</h4>
+          <div class="row">
+            <span class="col-xs-6">No validation:</span>
+            <span class="col-xs-6">{{model.novalidation}}</span>
+          </div>
+          <div class="row">
+            <span class="col-xs-6">Required, updates on blur:</span>
+            <span class="col-xs-6">{{model.requiredmaxtwenty}}</span>
+          </div>
+          <div class="row">
+            <span class="col-xs-6">Required, updates immediately:</span>
+            <span class="col-xs-6">{{model.requiredimmediate}}</span>
+          </div>
+        </div>
+      </section>
+    
+      <!-- Form with input field examples, submit handled by controller function -->
+      <form role="form" name="form.test" id="form.test" novalidate class="col-sm-12">
+        <p class="row col-sm-12">Preencha os valores abaixo:</p>
+        
+        <!-- different status indications bound to the model, only one shows -->
+        <div class="panel" ng-show='model.formstatus === "invalid"'>
+          <div class="panel-body bg-info" ng-show='model.formstatus === "unsubmitted"'>Form not yet submitted</div>
+          <div class="panel-body bg-warning" ng-show='model.formstatus === "invalid"'>Invalid form data submitted</div>
+        </div>
+        
+        <!-- Text input, no validation, icons, messages -->
+        <div class="form-group">
+            <label for="textfield" class="control-label">Pergunta (sem verificação)</label>
+            <input type="text" id="novalidation" name="novalidation" 
+                   class="form-control" placeholder="Any or no text is fine" 
+                   ng-model="model.novalidation">
+        </div>
+        
+        <!-- Text input, max 20 chars, validates/updates on blur away from field -->
+        <div class="form-group has-feedback"
+             ng-class="{ 'has-error' : form.test.requiredmaxtwenty.$invalid && !form.test.requiredmaxtwenty.$pristine,
+                         'has-success' : form.test.requiredmaxtwenty.$valid && !form.test.requiredmaxtwenty.$pristine }">
+          <label for="requiredmaxtwenty" 
+                 class="control-label">Pergunta (maximo de 20 chars)</label>
+
+          <input type="text" id="requiredmaxtwenty" name="requiredmaxtwenty" class="form-control"
+                 ng-maxlength="20" placeholder="Enter up to 20 characters"
+                 required aria-required="true" aria-describedby="requiredmaxtwentyInputStatus"
+                 ng-model="model.requiredmaxtwenty" ng-model-options="{ updateOn: 'blur' }">
+
+          <!-- Validation icon at right side of field -->
+          <span class="glyphicon form-control-feedback" aria-hidden="true"
+                ng-class="{ 'glyphicon-remove' : form.test.requiredmaxtwenty.$invalid && !form.test.requiredmaxtwenty.$pristine,
+                            'glyphicon-ok' : form.test.requiredmaxtwenty.$valid && !form.test.requiredmaxtwenty.$pristine }"></span>
+          <span id="requiredmaxtwentyInputStatus" class="sr-only">(success)</span>
+
+          <!-- Woof-O-Gram validation message if needed -->
+          <p ng-show="form.test.requiredmaxtwenty.$invalid && !form.test.requiredmaxtwenty.$error.maxlength && !form.test.requiredmaxtwenty.$pristine"
+             class="help-block">C'mon, you should write something</p>
+          <p ng-show="form.test.requiredmaxtwenty.$invalid && form.test.requiredmaxtwenty.$error.maxlength && !form.test.requiredmaxtwenty.$pristine"
+             class="help-block">That's an awful lot of typing just now.</p>
+             
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Escolha o Estado:</label>
+                <select class="form-control" ng-model="vm.selectedState" ng-options="estado.nome for estado in estados" ng-change="buscarCidadesPorSigla()">
+                    <option value="">Escolha um Estado</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Escolha a Cidade:</label>
+                <select class="form-control" ng-model="vm.selectedCity" ng-options="cidade for cidade in cidades">
+                    <option value="">Escolha uma Cidade</option>
+                </select>
+            </div>
+        
+        </div>
+        
+        <!-- Text input with input group validates/updates immediately -->
+        <div class="form-group has-feedback"
+             ng-class="{ 'has-error' : form.test.requiredimmediate.$invalid && !form.test.requiredimmediate.$pristine,
+                         'has-success' : form.test.requiredimmediate.$valid && !form.test.requiredimmediate.$pristine }">
+          <label for="requiredimmediate" 
+                 class="control-label">Pergunta requerida...</label>
+          
+          <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+            <input type="text" id="requiredimmediate" name="requiredimmediate" class="form-control"
+                 placeholder="Please type something here"
+                 required aria-required="true" aria-describedby="requiredimmediateInputStatus"
+                 ng-model="model.requiredimmediate">
+          </div>
+
+          <!-- Validation icon at right side of field -->
+          <span class="glyphicon form-control-feedback" aria-hidden="true"
+                ng-class="{ 'glyphicon-remove' : form.test.requiredimmediate.$invalid && !form.test.requiredimmediate.$pristine,
+                            'glyphicon-ok' : form.test.requiredimmediate.$valid && !form.test.requiredimmediate.$pristine }"></span>
+          <span id="requiredimmediateInputStatus" class="sr-only">(success)</span>
+
+          <!-- Woof-O-Gram validation message if needed -->
+          <p ng-show="form.test.requiredimmediate.$invalid && !form.test.requiredimmediate.$error.maxlength && !form.test.requiredimmediate.$pristine"
+             class="help-block">If you don't write something I'll be sad</p>
+        </div>
+        
+        <div class="form-group">
+          <!--<button type="submit" ng-click='submitForm()' class="btn btn-primary">Submit</button>-->
+          <button type="cancel" ng-click='clearForm()' class="btn btn-default">Limpar Formulário</button>
+        </div>
+      </form>
+    </div>

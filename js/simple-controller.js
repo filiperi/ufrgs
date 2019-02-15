@@ -16,6 +16,7 @@ angular.module('app', ['br.cidades.estados'])
     $scope.vm.selectedState = '';
     $scope.vm.selectedCity = '';
     $scope.vm.currentStep = 1;
+    
     $scope.vm.steps = [
       {
         step: 1,
@@ -43,9 +44,27 @@ angular.module('app', ['br.cidades.estados'])
         template: "step3.html"
       },      
     ];
+    
+    $scope.vm.processos_secagem = [
+        {name: "Não possui silo e entrega a produção para cooperativas"},
+        {name: "Não possui silo e entrega a produção para indústrias alimentícias"},
+        {name: "Possui silo de secagem com ar natural"},
+        {name: "Possui silo de secagem com GLP (Gás Liquefeito de Petróleo)"},
+        {name: "Possui silo de secagem com lenha"},
+    ];
+    
+    
+    
     $scope.vm.user = {};
     
+    //****************************************************************************************************************************************//
     //Functions
+    
+    $scope.selecionarTipoSecagem = function(secagem) {
+        $scope.vm.processo_secagem_selected = secagem;
+    };
+    
+    
     $scope.vm.gotoStep = function(newStep) {
       $scope.vm.currentStep = newStep;
     }

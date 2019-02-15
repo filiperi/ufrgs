@@ -1,7 +1,6 @@
     <div class="container">
       <header class="row">
-        <h1 class="col-sm-12">Título desta aba</h1>
-        <p class="col-sm-12">Sub-título do questionário</p>
+        <h1 class="col-sm-12">Apresentação</h1>
       </header>
       
       <!-- blue panel with bound values after data entry -->
@@ -25,91 +24,21 @@
     
       <!-- Form with input field examples, submit handled by controller function -->
       <form role="form" name="form.test" id="form.test" novalidate class="col-sm-12">
-        <p class="row col-sm-12">Preencha os valores abaixo:</p>
-        
-        <!-- different status indications bound to the model, only one shows -->
-        <div class="panel" ng-show='model.formstatus === "invalid"'>
-          <div class="panel-body bg-info" ng-show='model.formstatus === "unsubmitted"'>Form not yet submitted</div>
-          <div class="panel-body bg-warning" ng-show='model.formstatus === "invalid"'>Invalid form data submitted</div>
-        </div>
-        
-        <!-- Text input, no validation, icons, messages -->
-        <div class="form-group">
-            <label for="textfield" class="control-label">Pergunta (sem verificação)</label>
-            <input type="text" id="novalidation" name="novalidation" 
-                   class="form-control" placeholder="Any or no text is fine" 
-                   ng-model="model.novalidation">
-        </div>
-        
-        <!-- Text input, max 20 chars, validates/updates on blur away from field -->
-        <div class="form-group has-feedback"
-             ng-class="{ 'has-error' : form.test.requiredmaxtwenty.$invalid && !form.test.requiredmaxtwenty.$pristine,
-                         'has-success' : form.test.requiredmaxtwenty.$valid && !form.test.requiredmaxtwenty.$pristine }">
-          <label for="requiredmaxtwenty" 
-                 class="control-label">Pergunta (maximo de 20 chars)</label>
-
-          <input type="text" id="requiredmaxtwenty" name="requiredmaxtwenty" class="form-control"
-                 ng-maxlength="20" placeholder="Enter up to 20 characters"
-                 required aria-required="true" aria-describedby="requiredmaxtwentyInputStatus"
-                 ng-model="model.requiredmaxtwenty" ng-model-options="{ updateOn: 'blur' }">
-
-          <!-- Validation icon at right side of field -->
-          <span class="glyphicon form-control-feedback" aria-hidden="true"
-                ng-class="{ 'glyphicon-remove' : form.test.requiredmaxtwenty.$invalid && !form.test.requiredmaxtwenty.$pristine,
-                            'glyphicon-ok' : form.test.requiredmaxtwenty.$valid && !form.test.requiredmaxtwenty.$pristine }"></span>
-          <span id="requiredmaxtwentyInputStatus" class="sr-only">(success)</span>
-
-          <!-- Woof-O-Gram validation message if needed -->
-          <p ng-show="form.test.requiredmaxtwenty.$invalid && !form.test.requiredmaxtwenty.$error.maxlength && !form.test.requiredmaxtwenty.$pristine"
-             class="help-block">C'mon, you should write something</p>
-          <p ng-show="form.test.requiredmaxtwenty.$invalid && form.test.requiredmaxtwenty.$error.maxlength && !form.test.requiredmaxtwenty.$pristine"
-             class="help-block">That's an awful lot of typing just now.</p>
-             
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Escolha o Estado:</label>
-                <select class="form-control" ng-model="vm.selectedState" ng-options="estado.nome for estado in estados" ng-change="buscarCidadesPorSigla()">
-                    <option value="">Escolha um Estado</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Escolha a Cidade:</label>
-                <select class="form-control" ng-model="vm.selectedCity" ng-options="cidade for cidade in cidades">
-                    <option value="">Escolha uma Cidade</option>
-                </select>
-            </div>
-        
-        </div>
-        
-        <!-- Text input with input group validates/updates immediately -->
-        <div class="form-group has-feedback"
-             ng-class="{ 'has-error' : form.test.requiredimmediate.$invalid && !form.test.requiredimmediate.$pristine,
-                         'has-success' : form.test.requiredimmediate.$valid && !form.test.requiredimmediate.$pristine }">
-          <label for="requiredimmediate" 
-                 class="control-label">Pergunta requerida...</label>
-          
-          <div class="input-group">
-            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-            <input type="text" id="requiredimmediate" name="requiredimmediate" class="form-control"
-                 placeholder="Please type something here"
-                 required aria-required="true" aria-describedby="requiredimmediateInputStatus"
-                 ng-model="model.requiredimmediate">
-          </div>
-
-          <!-- Validation icon at right side of field -->
-          <span class="glyphicon form-control-feedback" aria-hidden="true"
-                ng-class="{ 'glyphicon-remove' : form.test.requiredimmediate.$invalid && !form.test.requiredimmediate.$pristine,
-                            'glyphicon-ok' : form.test.requiredimmediate.$valid && !form.test.requiredimmediate.$pristine }"></span>
-          <span id="requiredimmediateInputStatus" class="sr-only">(success)</span>
-
-          <!-- Woof-O-Gram validation message if needed -->
-          <p ng-show="form.test.requiredimmediate.$invalid && !form.test.requiredimmediate.$error.maxlength && !form.test.requiredimmediate.$pristine"
-             class="help-block">If you don't write something I'll be sad</p>
-        </div>
-        
-        <div class="form-group">
-          <!--<button type="submit" ng-click='submitForm()' class="btn btn-primary">Submit</button>-->
-          <button type="cancel" ng-click='clearForm()' class="btn btn-default">Limpar Formulário</button>
-        </div>
+        <p class="lead text-justify">
+            Esta pesquisa trata de um novo sistema de secagem e armazenagem de grãos que evita o uso da lenha e do gás liquefeito de petróleo (GLP) para reduzir os desperdícios monetários para os agricultores e reduzir impactos ambientais. Ao responder essa pesquisa, você contribui com a criação de um conjunto de produtos e serviços com tecnologia de ponta desenvolvida pela Universidade Federal do Rio Grande do Sul – UFRGS.
+        </p>
+         <p class="lead text-justify">
+            O tempo de preenchimento é de aproximadamente 10 minutos. Os seus dados são confidenciais, permanecem em sigilo de pesquisa, não serão divulgados individualmente.
+        </p>
+        <p class="lead text-justify">
+            A UFRGS e seus pesquisadores agradecem sua contribuição.  Esta pesquisa tem o apoio do Canal Rural e foi enviada aos principais municípios e propriedades de agronegócio brasileiras.
+        </p>
+        <p class="lead text-justify">
+            Sua opinião irá contribuir com o desenvolvimento de uma agricultura sustentável. Ao final da pesquisa, se tiver interesse em receber o relatório do estudo sem custo, deixe seu e-mail.
+        </p>
+        <p class="lead text-justify">
+            Agradecemos sua Contribuição! 
+        </p>
+       
       </form>
     </div>

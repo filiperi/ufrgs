@@ -1,5 +1,75 @@
-<h2>Step1 content</h2>
-<div class="form-group">
-  <label>Email</label>
-  <input type="email" class="form-control" name="email" ng-model="vm.user.email" required />
-</div>
+    <div class="container">
+      <header class="row">
+        <h3 class="col-sm-12">CARACTERIZAÇÃO DAS ATIVIDADES DO AGRICULTOR</h3>
+        <p class="col-sm-12">Sub-título do questionário</p>
+      </header>
+      
+      <!-- Form with input field examples, submit handled by controller function -->
+      <form role="form" name="form.test" id="form.test" novalidate class="col-sm-12">
+      
+        <div class="form-group">
+            <p class="row col-sm-12 lead">1. Quais tipos de cultura você trabalha?</p>
+            
+            <label class="checkbox-inline ">
+              <input type="checkbox" value="">Arroz
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" value="">Aveia
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" value="">Cevada
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" value="">Feijão
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" value="">Girassol
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" value="">Milho
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" value="">Soja
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" value="">Sorgo
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" value="">Trigo
+            </label>
+        </div>
+        
+        
+        <div class="form-group">
+             <p class="row col-sm-12 lead">2. Em que Estado e Município encontra-se situada sua propriedade?</p>
+        
+            <label for="exampleFormControlSelect1">Escolha o Estado:</label>
+            <select class="form-control" ng-model="vm.selectedState" ng-options="estado.nome for estado in estados" ng-change="buscarCidadesPorSigla()">
+                <option value="">Escolha um Estado</option>
+            </select>
+            
+            <label for="exampleFormControlSelect1">Escolha a Cidade:</label>
+            <select class="form-control" ng-model="vm.selectedCity" ng-options="cidade for cidade in cidades">
+                <option value="">Escolha uma Cidade</option>
+            </select>
+        </div>
+        
+        
+        <div class="form-group">
+             <p class="row col-sm-12 lead">3. Qual a situação atual de seu processo de secagem?</p>
+        
+            <div class="btn-group">
+              <button type="button" class="btn btn-danger"> {{vm.processo_secagem_selected != null ? vm.processo_secagem_selected : "Escolha uma opção clicando aqui!"}}</button>
+              
+              <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li ng-repeat="processo in vm.processos_secagem"><a ng-click="selecionarTipoSecagem(processo.name)">{{ processo.name }} </a></li>
+              </ul>
+            </div>
+        </div>
+        
+      </form>
+    </div>
