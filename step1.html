@@ -24,20 +24,10 @@
     
       <!-- Form with input field examples, submit handled by controller function -->
       <form role="form" name="form.test" id="form.test" novalidate class="col-sm-12">
-        <p class="lead text-justify">
-            Esta pesquisa trata de um novo sistema de secagem e armazenagem de grãos que evita o uso da lenha e do gás liquefeito de petróleo (GLP) para reduzir os desperdícios monetários para os agricultores e reduzir impactos ambientais. Ao responder essa pesquisa, você contribui com a criação de um conjunto de produtos e serviços com tecnologia de ponta desenvolvida pela Universidade Federal do Rio Grande do Sul – UFRGS.
-        </p>
-         <p class="lead text-justify">
-            O tempo de preenchimento é de aproximadamente 10 minutos. Os seus dados são confidenciais, permanecem em sigilo de pesquisa, não serão divulgados individualmente.
-        </p>
-        <p class="lead text-justify">
-            A UFRGS e seus pesquisadores agradecem sua contribuição.  Esta pesquisa tem o apoio do Canal Rural e foi enviada aos principais municípios e propriedades de agronegócio brasileiras.
-        </p>
-        <p class="lead text-justify">
-            Sua opinião irá contribuir com o desenvolvimento de uma agricultura sustentável. Ao final da pesquisa, se tiver interesse em receber o relatório do estudo sem custo, deixe seu e-mail.
-        </p>
-        <p class="lead text-justify">
-            Agradecemos sua Contribuição! 
+        
+        
+        <p class="lead text-justify" ng-repeat="paragrafo in vm.apresentacao">
+            {{paragrafo.name}}
         </p>
        
       </form>

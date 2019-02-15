@@ -1,5 +1,35 @@
-<h2>Step1 content</h2>
-<div class="form-group">
-  <label>Age</label>
-  <input type="number" class="form-control" name="age" ng-model="vm.user.age" required />
-</div>
+    <div class="container">
+      <header class="row">
+        <h1 class="col-sm-12">{{vm.produtos.introducao.titulo}}</h1>
+      </header>
+      
+      <!-- blue panel with bound values after data entry -->
+      <section class="row panel-body bg-primary" ng-show="false">
+        <div class="col-sm-12">
+          <h4>Field values from model-binding</h4>
+          <div class="row">
+            <span class="col-xs-6">No validation:</span>
+            <span class="col-xs-6">{{model.novalidation}}</span>
+          </div>
+          <div class="row">
+            <span class="col-xs-6">Required, updates on blur:</span>
+            <span class="col-xs-6">{{model.requiredmaxtwenty}}</span>
+          </div>
+          <div class="row">
+            <span class="col-xs-6">Required, updates immediately:</span>
+            <span class="col-xs-6">{{model.requiredimmediate}}</span>
+          </div>
+        </div>
+      </section>
+    
+      <!-- Form with input field examples, submit handled by controller function -->
+      <form role="form" name="form.test" id="form.test" novalidate class="col-sm-12 justify-content-center">
+        <p class="lead text-justify" ng-repeat="paragrafo in vm.produtos.introducao.paragrafos">
+            {{paragrafo.texto}}
+        </p>
+        
+        <div class="form-group">
+            <img src="./img/produtos.png" class="img-fluid" style="max-width: 100%" alt="Produtos">
+        </div>
+      </form>
+    </div>

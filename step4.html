@@ -1,0 +1,18 @@
+    <div class="container">
+      <header class="row">
+        <h1 class="col-sm-12">Produtos</h1>
+        <p class="col-sm-12">Bloco 1</p>
+      </header>
+      
+      <!-- Form with input field examples, submit handled by controller function -->
+      <form role="form" name="form.test" id="form.test" novalidate class="col-sm-12">
+      
+        <div class="form-group">
+            <p class="row col-sm-12 lead">5.{{vm.produtos.qalternativas}}</p>
+            
+            <label class="checkbox-inline" ng-repeat="cultura in vm.culturas.respostas"> 
+              <input type="checkbox" value="{{cultura.name}}">{{cultura.name}}
+            </label>
+        </div>
+      </form>
+    </div>
