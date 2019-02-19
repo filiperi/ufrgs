@@ -3,7 +3,7 @@
 angular.module('app', ['br.cidades.estados'])
 
   // only the one controller in this little example
-  .controller('AppCtrl', function($scope, brCidadesEstados) {
+  .controller('AppCtrl', function($scope, $window, $parse, brCidadesEstados) {
       
     // Page data model, initially blank ('pristine') with our own status tracking
     $scope.model = { 
@@ -112,6 +112,7 @@ angular.module('app', ['br.cidades.estados'])
     
     $scope.vm.produtos = { 
           qalternativas: "Dentre as alternativas de produto abaixo, qual você preferiria para o processo de secagem  de grãos?",
+          selecionados:  {"current":1, "bloco1": null, "bloco2": null, "bloco3":null, "bloco4":null},
           introducao: {
                         titulo: "Preferências do silo de secagem e armazenagem de grãos",
                         paragrafos: [
@@ -123,25 +124,25 @@ angular.module('app', ['br.cidades.estados'])
                                       {texto: "Considerando as possibilidades abaixo, julgue nas próximas etapas, qual produto, satisfaz suas necessidades"}
                                     ]
                           },
-          bloco1: {
-                    produtos:[
-                    {
-                        nome:"Produto 1",
-                        uri:"img/prod1.png"
-                    },
-                    {
-                        nome:"Produto 2",
-                        uri:"img/prod2.png"
-                    },
-                    {
-                        nome:"Produto 3",
-                        uri:"img/prod3.png"
-                    },
-                    {
-                        nome:"Produto 4",
-                        uri:"img/prod4.png"
-                    }],
-                  }                       
+          combinacao : [{texto: "Nesta seção, você identificará sua combinação que você preferiu em cada cenário apresentados entre as suas escolhas realizadas nas questões anteriores. Vamos apresentar novamente as alternativas que você escolheu e comparar entre eles o que você escolheria."}],
+          items: [
+                    { nome:"Produto 1", uri:"img/prod1.png", bloco:1},
+                    { nome:"Produto 2", uri:"img/prod2.png", bloco:1},
+                    { nome:"Produto 3", uri:"img/prod3.png", bloco:1},
+                    { nome:"Produto 4",  uri:"img/prod4.png", bloco:1},
+                    { nome:"Produto 5",  uri:"img/prod5.png", bloco:2},
+                    { nome:"Produto 6",  uri:"img/prod6.png", bloco:2},
+                    { nome:"Produto 7",  uri:"img/prod7.png", bloco:2},
+                    { nome:"Produto 8",  uri:"img/prod8.png", bloco:2},
+                    { nome:"Produto 9",  uri:"img/prod9.png", bloco:3},
+                    { nome:"Produto 10",  uri:"img/prod10.png", bloco:3},
+                    { nome:"Produto 11",  uri:"img/prod11.png", bloco:3},
+                    { nome:"Produto 12",  uri:"img/prod12.png", bloco:3},
+                    { nome:"Produto 13",  uri:"img/prod13.png", bloco:4},
+                    { nome:"Produto 14",  uri:"img/prod14.png", bloco:4},
+                    { nome:"Produto 15",  uri:"img/prod15.png", bloco:4},
+                    { nome:"Produto 16",  uri:"img/prod16.png", bloco:4}
+                  ]                       
     };
     
     
@@ -178,6 +179,17 @@ angular.module('app', ['br.cidades.estados'])
         "Age: " + $scope.vm.user.age);
     }  
       
+      
+    $scope.selecionarProduto = function (index, bloco) {
+        index++;
+        escolhaUsuario = $window.confirm('Você escolheu o produto ' + index + ', deseja continuar?');
+        
+        if(escolhaUsuario){
+            var bloco_str = 'vm.produtos.selecionados.bloco' + bloco;
+            $parse(bloco_str).assign($scope, index);
+            $scope.vm.produtos.selecionados.current = bloco + 1;
+        }        
+    }
       
     $scope.estados = brCidadesEstados.estados;
 
