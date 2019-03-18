@@ -40,8 +40,8 @@ angular.module('app', ['br.cidades.estados'])
       },    
       {
         step: 5,
-        name: "Quarto Questionário",
-        template: "step3.html"
+        name: "Produtos Adicionais",
+        template: "step5.html"
       },      
     ];
     
@@ -108,49 +108,53 @@ angular.module('app', ['br.cidades.estados'])
             {name: "Super produtor: superior a 500 hectares"}
         ]
     };
-    
+	
+    $scope.vm.resultado = {"produto_escolhido": null, "tipo_compra": null};
     
     $scope.vm.produtos = { 
           qalternativas: "Dentre as alternativas de produto abaixo, qual você preferiria para o processo de secagem  de grãos?",
-          selecionados:  {"current":1, "bloco1": null, "bloco2": null, "bloco3":null, "bloco4":null},
+          selecionados:  {"current":1, "bloco1": null, "bloco2": null, "bloco3":null, "bloco4":null, "escolha_usuario":null},
           introducao: {
                         titulo: "Preferências do silo de secagem e armazenagem de grãos",
-                        paragrafos: [
-                                      {texto: "Uma nova tecnologia foi desenvolvida para melhorar o processo de secagem e armazenagem de grãos, esta tecnologia se baseia em uma máquina de secagem que a partir de água e energia elétrica fornece calor para secar o grão. Esta solução visa entregar um sistema composto por produtos e serviços que forneçam a gestão da secagem e armazenagem de grãos, podendo ser adquirida nas modalidades compra e aluguel. Inicialmente, serão questionadas as possíveis configurações da máquina de secagem, as seguintes alternativas para configurar o produto são:"},
-                                      {texto: "(A) Capacidade do Silo: Um ou Dois Silos de armazenagem com capacidades de secar 30 toneladas de grãos em 7 dias."},
-                                      {texto: "(B) Funcionamento da máquina: O funcionamento da máquina pode ser controlado de forma manual (deverão ser contratados ao menos dois funcionários para a secagem ocorrer) ou automática (o proprietário pode controlar a máquina, sem necessidade de contratação)."},
-                                      {texto: "(C) Movimentação do Silo: O silo pode ser fixo (devendo estar fixo na propriedade) ou transportável (o silo demanda de um local plano para o funcionamento, sendo possível deixa-lo na lavoura)."},
-                                      {texto: "(D) Controle da Emissão de CO2: A máquina de secagem pode ter ou não um mecanismo que quantifique o gás carbônico (CO2) emitido, com esse controle, o agricultor pode vender os créditos de carbono (moedas verdes), tendo retorno financeiro."},
-                                      {texto: "Considerando as possibilidades abaixo, julgue nas próximas etapas, qual produto, satisfaz suas necessidades"}
-                                    ]
-                          },
+                        paragrafos: [{texto: "Uma nova tecnologia foi desenvolvida para melhorar o processo de secagem e armazenagem de grãos, esta tecnologia se baseia em uma máquina de secagem que a partir de água e energia elétrica fornece calor para secar o grão. Esta solução visa entregar um sistema composto por produtos e serviços que forneçam a gestão da secagem e armazenagem de grãos, podendo ser adquirida nas modalidades compra e aluguel. Inicialmente, serão questionadas as possíveis configurações da máquina de secagem, as seguintes alternativas para configurar o produto são:"},
+                        {texto: "(A) Capacidade do Silo: Um ou Dois Silos de armazenagem com capacidades de secar 30 toneladas de grãos em 7 dias."},
+                        {texto: "(B) Funcionamento da máquina: O funcionamento da máquina pode ser controlado de forma manual (deverão ser contratados ao menos dois funcionários para a secagem ocorrer) ou automática (o proprietário pode controlar a máquina, sem necessidade de contratação)."},
+                        {texto: "(C) Movimentação do Silo: O silo pode ser fixo (devendo estar fixo na propriedade) ou transportável (o silo demanda de um local plano para o funcionamento, sendo possível deixa-lo na lavoura)."},
+                        {texto: "(D) Controle da Emissão de CO2: A máquina de secagem pode ter ou não um mecanismo que quantifique o gás carbônico (CO2) emitido, com esse controle, o agricultor pode vender os créditos de carbono (moedas verdes), tendo retorno financeiro."},
+                        {texto: "Considerando as possibilidades abaixo, julgue nas próximas etapas, qual produto, satisfaz suas necessidades"}]
+                        },
           combinacao : [{texto: "Nesta seção, você identificará sua combinação que você preferiu em cada cenário apresentados entre as suas escolhas realizadas nas questões anteriores. Vamos apresentar novamente as alternativas que você escolheu e comparar entre eles o que você escolheria."}],
+		  adicionais : {texto: "Para o produto que você escolheu, se fosse adquiri-lo, qual a melhor modalidade de aquisição?", opcoes: [{texto:"Compra"},{texto: "Aluguel mensal"}]},
+		  interesse: [
+		  {value:0,min:0,max:1600,texto:"Você teria interesse nos seguintes serviços adicionais da oferta integrada de produtos e serviços?",opcoes: [{texto:"Sem manutenção"},{texto:"Manutenção Corretiva"},{texto:"Manutenção Corretiva e Preventiva"}]},
+		  {value:0,min:0,max:2500,texto:"Geração de relatórios da situação atual dos grãos secos e armazenados no(s) silo(s)?",opcoes: [{texto:"Sem relatório"},{texto:"Relatório de Secagem – umidade, temperatura da máquina, temperatura da secagem do grão, qualidade da água, energia consumida e, se solicitado controle da emissão de CO2"},{texto:"Relatório de Secagem e Armazenagem – além dos dados da secagem, são fornecidos dados da temperatura da massa do grão, umidade do silo, presença de fungos e micotoxinas e, avisos para a realização de manutenções"}]},
+		  {value:0,min:0,max:500,texto:"Tipo de Energia para o funcionamento do silo",opcoes: [{texto:"Energia elétrica"},{texto:"Painel solar em metade da parte superior do silo: Propicia redução parcial no consumo de Energia Elétrica"},{texto:"Painel solar em toda a parte superior do silo: Propicia redução total no consumo de Energia Elétrica"}]},
+		  {value:0,min:0,max:1000,texto:"Tipo de Energia para o funcionamento do silo",opcoes: [{texto:"Energia elétrica"},{texto:"Painel solar em toda a parte superior de 1 silo: Propicia redução parcial no consumo de Energia Elétrica"},{texto:"Painel solar em toda a parte superior de 2 silos: Propicia redução total no consumo de Energia Elétrica"}]}
+		 ],
           items: [
-                    { nome:"Produto 1", uri:"img/prod1.png", bloco:1},
-                    { nome:"Produto 2", uri:"img/prod2.png", bloco:1},
-                    { nome:"Produto 3", uri:"img/prod3.png", bloco:1},
-                    { nome:"Produto 4",  uri:"img/prod4.png", bloco:1},
-                    { nome:"Produto 5",  uri:"img/prod5.png", bloco:2},
-                    { nome:"Produto 6",  uri:"img/prod6.png", bloco:2},
-                    { nome:"Produto 7",  uri:"img/prod7.png", bloco:2},
-                    { nome:"Produto 8",  uri:"img/prod8.png", bloco:2},
-                    { nome:"Produto 9",  uri:"img/prod9.png", bloco:3},
-                    { nome:"Produto 10",  uri:"img/prod10.png", bloco:3},
-                    { nome:"Produto 11",  uri:"img/prod11.png", bloco:3},
-                    { nome:"Produto 12",  uri:"img/prod12.png", bloco:3},
-                    { nome:"Produto 13",  uri:"img/prod13.png", bloco:4},
-                    { nome:"Produto 14",  uri:"img/prod14.png", bloco:4},
-                    { nome:"Produto 15",  uri:"img/prod15.png", bloco:4},
-                    { nome:"Produto 16",  uri:"img/prod16.png", bloco:4}
+                    { id: 1, nome:"Produto 1", uri:"img/prod1.png", bloco:1, aluguel:7650, compra:90000},
+                    { id: 2, nome:"Produto 2", uri:"img/prod2.png", bloco:1, aluguel:7300, compra:89000},
+                    { id: 3, nome:"Produto 3", uri:"img/prod3.png", bloco:1, aluguel:6500, compra:81000},
+                    { id: 4, nome:"Produto 4",  uri:"img/prod4.png", bloco:1, aluguel:6750, compra:82000},
+                    { id: 5, nome:"Produto 5",  uri:"img/prod5.png", bloco:2, aluguel:6250, compra:79000},
+                    { id: 6, nome:"Produto 6",  uri:"img/prod6.png", bloco:2, aluguel:6850, compra:84000},
+                    { id: 7, nome:"Produto 7",  uri:"img/prod7.png", bloco:2, aluguel:6200, compra:77000},
+                    { id: 8, nome:"Produto 8",  uri:"img/prod8.png", bloco:2, aluguel:6400, compra:80000},
+                    { id: 9, nome:"Produto 9",  uri:"img/prod9.png", bloco:3, aluguel:7500, compra:95000},
+                    { id: 10, nome:"Produto 10",  uri:"img/prod10.png", bloco:3, aluguel:6600, compra:83000},
+                    { id: 11, nome:"Produto 11",  uri:"img/prod11.png", bloco:3, aluguel:7700, compra:92000},
+                    { id: 12, nome:"Produto 12",  uri:"img/prod12.png", bloco:3, aluguel:6100, compra:76000},
+                    { id: 13, nome:"Produto 13",  uri:"img/prod13.png", bloco:4, aluguel:6300, compra:78000},
+                    { id: 14, nome:"Produto 14",  uri:"img/prod14.png", bloco:4, aluguel:7900, compra:96000},
+                    { id: 15, nome:"Produto 15",  uri:"img/prod15.png", bloco:4, aluguel:6000, compra:75000},
+                    { id: 16, nome:"Produto 16",  uri:"img/prod16.png", bloco:4, aluguel:8000, compra:100000},
                   ]                       
     };
     
     
     
-    
-    
     $scope.vm.user = {};
-    
+	    
     //****************************************************************************************************************************************//
     //Functions
     
@@ -190,6 +194,58 @@ angular.module('app', ['br.cidades.estados'])
             $scope.vm.produtos.selecionados.current = bloco + 1;
         }        
     }
+	
+	
+	$scope.selecionarProdutoFinal = function (selecionado, bloco) {
+        escolhaUsuario = $window.confirm('Você escolheu o produto ' + selecionado + ', deseja continuar?');
+        
+        if(escolhaUsuario){
+			$scope.vm.resultado.produto_escolhido = $scope.vm.produtos.items.find(x => x.id === selecionado);
+			$scope.vm.currentStep = 5;
+        }        
+    }
+	
+	$scope.vm.sum = function (){ 
+		if ($scope.vm.resultado.produto_escolhido != null) {
+			
+			var valueRetAluguel = ($scope.vm.resultado.produto_escolhido.aluguel - 0) + ($scope.vm.produtos.interesse[0].value - 0) + ($scope.vm.produtos.interesse[1].value - 0) + ($scope.vm.produtos.interesse[2].value - 0);
+					
+			var valueRetCompra =  ($scope.vm.resultado.produto_escolhido.compra-0) + ($scope.vm.produtos.interesse[0].value-0) + ( $scope.vm.produtos.interesse[1].value-0) + ($scope.vm.produtos.interesse[2].value - 0)
+			
+			if ($scope.vm.resultado.tipo_compra === 'Aluguel mensal'){
+				return valueRetAluguel;
+			}
+			return valueRetCompra;
+		}
+		return 0;
+	}
+	
+	$scope.vm.checkRange500 = function(){
+		var produtosNoRange500 = [1, 2, 6, 7, 10, 12, 13, 15];
+		var isInRange = false;
+		
+		for (i = 0; i < produtosNoRange500.length; i++) {
+			if (vm.resultado.produto_escolhido.id === produtosNoRange500[i]){
+				isInRange = true;
+				break;
+			}
+		}
+		return isInRange;
+	}
+	
+	$scope.vm.checkRange1000 = function(){
+		var produtosNoRange1000 = [3, 4, 5, 8, 9];
+		var isInRange = false;
+		
+		for (i = 0; i < produtosNoRange1000.length; i++) {
+			if (vm.resultado.produto_escolhido.id === produtosNoRange1000[i]){
+				isInRange = true;
+				break;
+			}
+		}
+		return isInRange;
+	}
+	
       
     $scope.estados = brCidadesEstados.estados;
 

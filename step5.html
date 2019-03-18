@@ -1,0 +1,98 @@
+<div class="container">
+  <header class="row">
+	<h1 class="col-sm-12">Produto {{vm.resultado.produto_escolhido.id}} escolhido</h1>		
+  </header>
+  
+  <!-- Form with input field examples, submit handled by controller function -->
+  
+	<div class="form-group">
+		<div class="row form-group" >
+			<div class="col-sm-12">
+				<p class="lead">10. {{vm.produtos.adicionais.texto}}</p>
+				<form>
+					<label class="radio-inline">
+					<input type="radio"  name="optradio" ng-model="vm.resultado.tipo_compra" value="{{vm.produtos.adicionais.opcoes[0].texto}}">{{vm.produtos.adicionais.opcoes[0].texto}} ({{vm.resultado.produto_escolhido.compra | currency:'R$'}})
+					</label>
+					
+					<label class="radio-inline">
+					<input type="radio" name="optradio" ng-model="vm.resultado.tipo_compra" value="{{vm.produtos.adicionais.opcoes[1].texto}}">
+						{{vm.produtos.adicionais.opcoes[1].texto}} ({{vm.resultado.produto_escolhido.aluguel | currency:'R$'}})
+					</label>
+				</form>
+			</div>
+		</div>
+		
+		<div class="panel panel-default">
+			<div class="row form-group">
+				<h4 class="col-sm-11">{{vm.produtos.interesse[0].texto}}</h4>	
+				<div class="col-sm-8">
+						<div class="control-group">
+							<div class="controls form-inline">
+								<p class="lead">11. Manutenção (Valores por mês)</p>
+								<label for="preco">R$ 0</label>
+								<input type="range" ng-model="vm.produtos.interesse[0].value" min="{{vm.produtos.interesse[0].min}}"  max="{{vm.produtos.interesse[0].max}}" class="slider">
+								<label for="preco">R$ {{vm.produtos.interesse[0].value}}</label>
+								<div class="col-sm-4"> <p>{{vm.produtos.interesse[0].opcoes[0].texto}}</p> </div>
+								<div class="col-sm-4"><p>{{vm.produtos.interesse[0].opcoes[1].texto}}</p> </div>
+								<div class="col-sm-4 text-right"><p>{{vm.produtos.interesse[0].opcoes[2].texto}}</p> </div>
+							</div>
+						</div>
+						
+						
+						<div class="control-group">
+							<div class="controls form-inline">
+								<p class="lead">12. {{vm.produtos.interesse[1].texto}}</p>
+								<label for="preco">R$ 0</label>
+								<input type="range" ng-model="vm.produtos.interesse[1].value" min="{{vm.produtos.interesse[1].min}}"  max="{{vm.produtos.interesse[1].max}}" class="slider">
+								<label for="preco">R$ {{vm.produtos.interesse[1].value}}</label>
+								<div class="col-sm-4"> <p>{{vm.produtos.interesse[1].opcoes[0].texto}}</p> </div>
+								<div class="col-sm-4"><p>{{vm.produtos.interesse[1].opcoes[1].texto}}</p> </div>
+								<div class="col-sm-4 text-right"><p>{{vm.produtos.interesse[1].opcoes[2].texto}}</p> </div>
+							</div>
+						</div>
+				</div>
+				<div class="col-sm-4">
+					</p>
+						<div ng-if="vm.resultado.tipo_compra != null">
+							 <div class="row"><p class="lead">Valor parcial: {{vm.sum() | currency:'R$'}}</div>
+							 <div class="row"><label>Opção: {{vm.resultado.tipo_compra}}</label></div>
+							 <div class="row" ng-if="vm.resultado.tipo_compra =='Compra'"><label>Valor da opção: {{vm.resultado.produto_escolhido.compra | currency:'R$'}}</label></div>
+							 <div class="row" ng-if="vm.resultado.tipo_compra =='Aluguel mensal'"><label>Valor da opção: {{vm.resultado.produto_escolhido.aluguel | currency:'R$'}}</label></div>
+							 <div class="row"><label>Manutenção: {{vm.produtos.interesse[0].value | currency:'R$'}}</label></div>
+							 <div class="row"><label>Geração de relatórios: {{vm.produtos.interesse[1].value | currency:'R$'}}</label></div>
+							 <div class="row"> <label>Tipo de Energia: {{vm.produtos.interesse[2].value | currency:'R$'}}</label></div>
+						</div>
+				</div>
+			</div>
+			<div class="row form-group"/>
+			
+		</div>
+		
+		
+		<div class="row form-group">
+			<div class="col-sm-8">
+				<div class="control-group">
+					<div class="controls form-inline" ng-if="vm.checkRange500">
+						<p class="lead">13. {{vm.produtos.interesse[2].texto}}</p>
+						<label for="preco">R$ 0</label>
+						<input type="range" ng-model="vm.produtos.interesse[2].value" min="{{vm.produtos.interesse[2].min}}"  max="{{vm.produtos.interesse[2].max}}" class="slider">
+						<label for="preco">R$ {{vm.produtos.interesse[2].value}}</label>
+						<div class="col-sm-4"> <p>{{vm.produtos.interesse[2].opcoes[0].texto}}</p> </div>
+						<div class="col-sm-4"><p>{{vm.produtos.interesse[2].opcoes[1].texto}}</p> </div>
+						<div class="col-sm-4 text-right"><p>{{vm.produtos.interesse[2].opcoes[2].texto}}</p> </div>
+					</div>
+					
+					<div class="controls form-inline" ng-if="vm.checkRange1000">
+						<p class="lead">13. {{vm.produtos.interesse[3].texto}}</p>
+						<label for="preco">R$ 0</label>
+						<input type="range" ng-model="vm.produtos.interesse[3].value" min="{{vm.produtos.interesse[3].min}}"  max="{{vm.produtos.interesse[3].max}}" class="slider">
+						<label for="preco">R$ {{vm.produtos.interesse[3].value}}</label>
+						<div class="col-sm-4"> <p>{{vm.produtos.interesse[3].opcoes[0].texto}}</p> </div>
+						<div class="col-sm-4"><p>{{vm.produtos.interesse[3].opcoes[1].texto}}</p> </div>
+						<div class="col-sm-4 text-right"><p>{{vm.produtos.interesse[3].opcoes[2].texto}}</p> </div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>

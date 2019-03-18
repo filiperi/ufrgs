@@ -1,75 +1,84 @@
-    <div class="container">
-      <header class="row">
-        <h1 class="col-sm-12">Produtos</h1>
-      </header>
-      
-      <!-- Form with input field examples, submit handled by controller function -->
-      <form role="form" name="form.test" id="form.test" novalidate class="col-sm-12">
-      
-        <div class="form-group">
-            <div class="row" ng-if="vm.produtos.selecionados.current < 5">
-                <p class="lead">5. {{vm.produtos.qalternativas}}</p>
-            </div>
-            
-            
-            <div class="col-md-12 ml-md-auto" ng-repeat="imgElement in vm.produtos.items" ng-if="$index % 4 == 0">
-                <div class="row" ng-if="vm.produtos.selecionados.current == imgElement.bloco">
-                    
-                    <h4 class="lead">Bloco {{imgElement.bloco}}</h4>
-                    <div class="col-sm-2">
-                        <a class="thumbnail">
-                            <img ng-src="{{vm.produtos.items[$index].uri}}" ng-click="selecionarProduto($index, imgElement.bloco)">
-                        </a>
-                    </div>
-                    <div class="col-sm-2">
-                        <a class="thumbnail">
-                            <img ng-src="{{vm.produtos.items[$index+1].uri}}" ng-click="selecionarProduto($index+1, imgElement.bloco)">
-                        </a>
-                    </div>
-                    <div class="col-sm-2">
-                        <a class="thumbnail">
-                            <img ng-src="{{vm.produtos.items[$index+2].uri}}" ng-click="selecionarProduto($index+2, imgElement.bloco)">
-                        </a>
-                    </div>
-                    <div class="col-sm-2">
-                        <a class="thumbnail">
-                            <img ng-src="{{vm.produtos.items[$index+3].uri}}" ng-click="selecionarProduto($index+3, imgElement.bloco)">
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            
-            <div class="row" ng-if="vm.produtos.selecionados.current >= 5">
-                <div>
-                    <p class="lead text-justify">
-                        {{vm.produtos.combinacao[0].texto}}
-                    </p>
-                    
-                    <div class="col-sm-2">
-                        <a class="thumbnail">
-                            <img ng-src="{{vm.produtos.items[vm.produtos.selecionados.bloco1-1].uri}}" ng-click="selecionarProduto($index, imgElement.bloco)">
-                        </a>
-                    </div>
-                    <div class="col-sm-2">
-                        <a class="thumbnail">
-                            <img ng-src="{{vm.produtos.items[vm.produtos.selecionados.bloco2-1].uri}}" ng-click="selecionarProduto($index+1, imgElement.bloco)">
-                        </a>
-                    </div>
-                    <div class="col-sm-2">
-                        <a class="thumbnail">
-                            <img ng-src="{{vm.produtos.items[vm.produtos.selecionados.bloco3-1].uri}}" ng-click="selecionarProduto($index+2, imgElement.bloco)">
-                        </a>
-                    </div>
-                    <div class="col-sm-2">
-                        <a class="thumbnail">
-                            <img ng-src="{{vm.produtos.items[vm.produtos.selecionados.bloco4-1].uri}}" ng-click="selecionarProduto($index+3, imgElement.bloco)">
-                        </a>
-                    </div>
-                </div>
-            </div>
-            </div>
+<div class="container">
+	<header class="row">
+		<h1 class="col-sm-12">Produtos</h1>
+	</header>
+  
+  <!-- Form with input field examples, submit handled by controller function -->
+	<form role="form" name="form.test" id="form.test" novalidate class="col-sm-12">
+  
+		<div class="form-group">
+			<div class="row" ng-if="vm.produtos.selecionados.current < 5">
+				<div class="col-sm-12"><p class="lead">5. {{vm.produtos.qalternativas}}</p></div>
+			</div>
+			
+			
+			<div class="row" ng-repeat="imgElement in vm.produtos.items" ng-if="$index % 4 == 0">
+				<div class="col-sm-1">
+				</div>
+				<div class="col-sm-9">
+					<div ng-if="vm.produtos.selecionados.current == imgElement.bloco">
+						<h4 class="lead">Bloco {{imgElement.bloco}}</h4>
+						<div class="col-sm-3">
+							<a class="thumbnail">
+								<img ng-src="{{vm.produtos.items[$index].uri}}" ng-click="selecionarProduto($index, imgElement.bloco)">
+							</a>
+						</div>
+						<div class="col-sm-3">
+							<a class="thumbnail">
+								<img ng-src="{{vm.produtos.items[$index+1].uri}}" ng-click="selecionarProduto($index+1, imgElement.bloco)">
+							</a>
+						</div>
+						<div class="col-sm-3">
+							<a class="thumbnail">
+								<img ng-src="{{vm.produtos.items[$index+2].uri}}" ng-click="selecionarProduto($index+2, imgElement.bloco)">
+							</a>
+						</div>
+						<div class="col-sm-3">
+							<a class="thumbnail">
+								<img ng-src="{{vm.produtos.items[$index+3].uri}}" ng-click="selecionarProduto($index+3, imgElement.bloco)">
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-2">
+				</div>
+			</div>
+			
+	
+			<div class="row" ng-if="vm.produtos.selecionados.current >= 5">
+				<p class="lead text-justify">
+					{{vm.produtos.combinacao[0].texto}}
+				</p>
+				<div class="col-sm-1">
+				</div>
+				
+				<div class="col-sm-9">
+					<div class="col-sm-3">
+						<a class="thumbnail">
+							<img ng-src="{{vm.produtos.items[vm.produtos.selecionados.bloco1-1].uri}}" ng-click="selecionarProdutoFinal(vm.produtos.selecionados.bloco1, imgElement.bloco)">
+						</a>
+					</div>
+					<div class="col-sm-3">
+						<a class="thumbnail">
+							<img ng-src="{{vm.produtos.items[vm.produtos.selecionados.bloco2-1].uri}}" ng-click="selecionarProdutoFinal(vm.produtos.selecionados.bloco2, imgElement.bloco)">
+						</a>
+					</div>
+					<div class="col-sm-3">
+						<a class="thumbnail">
+							<img ng-src="{{vm.produtos.items[vm.produtos.selecionados.bloco3-1].uri}}" ng-click="selecionarProdutoFinal(vm.produtos.selecionados.bloco3, imgElement.bloco)">
+						</a>
+					</div>
+					<div class="col-sm-3">
+						<a class="thumbnail">
+							<img ng-src="{{vm.produtos.items[vm.produtos.selecionados.bloco4-1].uri}}" ng-click="selecionarProdutoFinal(vm.produtos.selecionados.bloco4, imgElement.bloco)">
+						</a>
+					</div>				
+				</div>
+				
+				<div class="col-sm-2">
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
 
-        </div>
-      </form>
-    </div>

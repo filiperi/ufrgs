@@ -1,0 +1,11 @@
+.i-am-centered { margin: auto; max-width: 300px;}
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  width: 85%; /* Full-width */
+  height: 10px; /* Specified height */
+}
