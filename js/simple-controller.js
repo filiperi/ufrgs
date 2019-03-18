@@ -109,7 +109,7 @@ angular.module('app', ['br.cidades.estados'])
         ]
     };
 	
-    $scope.vm.resultado = {"produto_escolhido": null, "tipo_compra": null};
+    $scope.vm.resultado = {"produto_escolhido": null, "tipo_compra": null, "unico_silo": true};
     
     $scope.vm.produtos = { 
           qalternativas: "Dentre as alternativas de produto abaixo, qual você preferiria para o processo de secagem  de grãos?",
@@ -201,6 +201,7 @@ angular.module('app', ['br.cidades.estados'])
         
         if(escolhaUsuario){
 			$scope.vm.resultado.produto_escolhido = $scope.vm.produtos.items.find(x => x.id === selecionado);
+			$scope.vm.resultado.unico_silo = $scope.vm.checkRange500();
 			$scope.vm.currentStep = 5;
         }        
     }
@@ -208,9 +209,9 @@ angular.module('app', ['br.cidades.estados'])
 	$scope.vm.sum = function (){ 
 		if ($scope.vm.resultado.produto_escolhido != null) {
 			
-			var valueRetAluguel = ($scope.vm.resultado.produto_escolhido.aluguel - 0) + ($scope.vm.produtos.interesse[0].value - 0) + ($scope.vm.produtos.interesse[1].value - 0) + ($scope.vm.produtos.interesse[2].value - 0);
+			var valueRetAluguel = ($scope.vm.resultado.produto_escolhido.aluguel - 0) + ($scope.vm.produtos.interesse[0].value - 0) + ($scope.vm.produtos.interesse[1].value - 0) + ($scope.vm.produtos.interesse[2].value - 0) + ($scope.vm.produtos.interesse[3].value - 0);
 					
-			var valueRetCompra =  ($scope.vm.resultado.produto_escolhido.compra-0) + ($scope.vm.produtos.interesse[0].value-0) + ( $scope.vm.produtos.interesse[1].value-0) + ($scope.vm.produtos.interesse[2].value - 0)
+			var valueRetCompra =  ($scope.vm.resultado.produto_escolhido.compra-0) + ($scope.vm.produtos.interesse[0].value-0) + ( $scope.vm.produtos.interesse[1].value-0) + ($scope.vm.produtos.interesse[2].value - 0) + ($scope.vm.produtos.interesse[3].value - 0);
 			
 			if ($scope.vm.resultado.tipo_compra === 'Aluguel mensal'){
 				return valueRetAluguel;
@@ -225,7 +226,7 @@ angular.module('app', ['br.cidades.estados'])
 		var isInRange = false;
 		
 		for (i = 0; i < produtosNoRange500.length; i++) {
-			if (vm.resultado.produto_escolhido.id === produtosNoRange500[i]){
+			if ($scope.vm.resultado.produto_escolhido.id === produtosNoRange500[i]){
 				isInRange = true;
 				break;
 			}
@@ -233,20 +234,6 @@ angular.module('app', ['br.cidades.estados'])
 		return isInRange;
 	}
 	
-	$scope.vm.checkRange1000 = function(){
-		var produtosNoRange1000 = [3, 4, 5, 8, 9];
-		var isInRange = false;
-		
-		for (i = 0; i < produtosNoRange1000.length; i++) {
-			if (vm.resultado.produto_escolhido.id === produtosNoRange1000[i]){
-				isInRange = true;
-				break;
-			}
-		}
-		return isInRange;
-	}
-	
-      
     $scope.estados = brCidadesEstados.estados;
 
     $scope.buscarCidadesPorSigla = function(){

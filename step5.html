@@ -72,7 +72,7 @@
 		<div class="row form-group">
 			<div class="col-sm-8">
 				<div class="control-group">
-					<div class="controls form-inline" ng-if="vm.checkRange500">
+					<div class="controls form-inline" ng-if="vm.resultado.unico_silo == true">
 						<p class="lead">13. {{vm.produtos.interesse[2].texto}}</p>
 						<label for="preco">R$ 0</label>
 						<input type="range" ng-model="vm.produtos.interesse[2].value" min="{{vm.produtos.interesse[2].min}}"  max="{{vm.produtos.interesse[2].max}}" class="slider">
@@ -82,7 +82,7 @@
 						<div class="col-sm-4 text-right"><p>{{vm.produtos.interesse[2].opcoes[2].texto}}</p> </div>
 					</div>
 					
-					<div class="controls form-inline" ng-if="vm.checkRange1000">
+					<div class="controls form-inline" ng-if="vm.resultado.unico_silo == false">
 						<p class="lead">13. {{vm.produtos.interesse[3].texto}}</p>
 						<label for="preco">R$ 0</label>
 						<input type="range" ng-model="vm.produtos.interesse[3].value" min="{{vm.produtos.interesse[3].min}}"  max="{{vm.produtos.interesse[3].max}}" class="slider">
