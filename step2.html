@@ -22,11 +22,19 @@
             <select class="form-control" ng-model="vm.selectedState" ng-options="estado.nome for estado in estados" ng-change="buscarCidadesPorSigla()">
                 <option value="">Escolha um Estado</option>
             </select>
+			
+			<div class="alert alert-danger" ng-if="validationOn && (vm.selectedState == '' || vm.selectedState == null)">
+				<strong>Alerta!</strong> {{vm.erros.campo_requerido}}.
+			</div>
             
             <label for="exampleFormControlSelect1">Escolha a Cidade:</label>
             <select class="form-control" ng-model="vm.selectedCity" ng-options="cidade for cidade in cidades">
                 <option value="">Escolha uma Cidade</option>
             </select>
+			
+			<div class="alert alert-danger" ng-if="validationOn && (vm.selectedCity == '' || vm.selectedCity == null)">
+				<strong>Alerta!</strong> {{vm.erros.campo_requerido}}.
+			</div>
         </div>
         
         
@@ -44,11 +52,14 @@
                 <li ng-repeat="processo in vm.processos_secagem.respostas"><a ng-click="setSelecionado(vm.processos_secagem, processo.name)">{{ processo.name }} </a></li>
               </ul>
             </div>
+			<div class="alert alert-danger" ng-if="validationOn && vm.processos_secagem.selecionado == null">
+				<strong>Alerta!</strong> {{vm.erros.campo_requerido}}.
+			</div>
         </div>
         
         
          <div class="form-group">
-             <p class="row col-sm-12 lead">4.{{vm.renda_bruta.pergunta}} </p>
+             <p class="row col-sm-12 lead">4.{{vm.renda_bruta.pergunta}} </p>			
              
             <div class="btn-group">
               <button type="button" class="btn btn-default"> {{vm.renda_bruta.selecionado != null ? vm.renda_bruta.selecionado : "Escolha uma opção clicando aqui!"}}</button>
@@ -61,6 +72,9 @@
                 <li ng-repeat="processo in vm.renda_bruta.respostas"><a ng-click="setSelecionado(vm.renda_bruta, processo.name)">{{ processo.name }} </a></li>
               </ul>
             </div>
+			<div class="alert alert-danger" ng-if="validationOn && vm.renda_bruta.selecionado == null">
+					<strong>Alerta!</strong> {{vm.erros.campo_requerido}}.
+			</div>
         </div>
         
       </form>

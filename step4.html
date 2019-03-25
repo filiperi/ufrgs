@@ -11,7 +11,6 @@
 				<div class="col-sm-12"><p class="lead">5. {{vm.produtos.qalternativas}}</p></div>
 			</div>
 			
-			
 			<div class="row" ng-repeat="imgElement in vm.produtos.items" ng-if="$index % 4 == 0">
 				<div class="col-sm-1">
 				</div>
@@ -44,7 +43,6 @@
 				</div>
 			</div>
 			
-	
 			<div class="row" ng-if="vm.produtos.selecionados.current >= 5">
 				<p class="lead text-justify">
 					{{vm.produtos.combinacao[0].texto}}
@@ -78,6 +76,15 @@
 				<div class="col-sm-2">
 				</div>
 			</div>
+			
+			<div class="row" ng-if="validationOn && vm.resultado.produto_escolhido == null">
+				<div class="col-sm-12">
+					<div class="alert alert-danger" >
+						<strong>Alerta!</strong> {{vm.erros.produto_requerido}}
+					</div>
+				</div>
+			</div>
+			
 		</div>
 	</form>
 </div>

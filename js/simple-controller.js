@@ -43,6 +43,11 @@ angular.module('app', ['br.cidades.estados'])
         name: "Produtos Adicionais",
         template: "step5.html"
       },      
+	  {
+        step: 6,
+        name: "Escolha final",
+        template: "step6.html"
+      },  
     ];
     
     //Cada item na variavel apresentação é um novo parágrafo.
@@ -110,7 +115,7 @@ angular.module('app', ['br.cidades.estados'])
     };
 	
     $scope.vm.resultado = {"produto_escolhido": null, "tipo_compra": null, "unico_silo": true};
-    
+    $scope.vm.erros = {"campo_requerido": "*Campo deve ser preenchido.", "produto_requerido": "Você deve selecionar as opções e selecionar um produto final."};
     $scope.vm.produtos = { 
           qalternativas: "Dentre as alternativas de produto abaixo, qual você preferiria para o processo de secagem  de grãos?",
           selecionados:  {"current":1, "bloco1": null, "bloco2": null, "bloco3":null, "bloco4":null, "escolha_usuario":null},
@@ -125,6 +130,7 @@ angular.module('app', ['br.cidades.estados'])
                         },
           combinacao : [{texto: "Nesta seção, você identificará sua combinação que você preferiu em cada cenário apresentados entre as suas escolhas realizadas nas questões anteriores. Vamos apresentar novamente as alternativas que você escolheu e comparar entre eles o que você escolheria."}],
 		  adicionais : {texto: "Para o produto que você escolheu, se fosse adquiri-lo, qual a melhor modalidade de aquisição?", opcoes: [{texto:"Compra"},{texto: "Aluguel mensal"}]},
+		  escolha_final : {titulo:"Escolha final", paragrafos: [{texto:"Você optou pelo(a) {0} do produto {1} por R$ {2} com estes itens adicionais: {3}"}, {texto: "Com R$ {4} por mês você poderia {5} esses mesmos itens. Sabendo disso, você manteria a opção de {0}?"}]},
 		  interesse: [
 		  {value:0,min:0,max:1600,texto:"Você teria interesse nos seguintes serviços adicionais da oferta integrada de produtos e serviços?",opcoes: [{texto:"Sem manutenção"},{texto:"Manutenção Corretiva"},{texto:"Manutenção Corretiva e Preventiva"}]},
 		  {value:0,min:0,max:2500,texto:"Geração de relatórios da situação atual dos grãos secos e armazenados no(s) silo(s)?",opcoes: [{texto:"Sem relatório"},{texto:"Relatório de Secagem – umidade, temperatura da máquina, temperatura da secagem do grão, qualidade da água, energia consumida e, se solicitado controle da emissão de CO2"},{texto:"Relatório de Secagem e Armazenagem – além dos dados da secagem, são fornecidos dados da temperatura da massa do grão, umidade do silo, presença de fungos e micotoxinas e, avisos para a realização de manutenções"}]},
@@ -164,8 +170,30 @@ angular.module('app', ['br.cidades.estados'])
     
     
     $scope.vm.gotoStep = function(newStep) {
-      $scope.vm.currentStep = newStep;
+	  if ($scope.vm.validateStep(newStep -1)){
+			$scope.vm.currentStep = newStep;
+	  }
     }
+	
+	$scope.validationOn = false;
+	
+	$scope.vm.validateStep = function(step) {
+		$scope.validationOn = true;
+	
+		if (step >= 2 && step <4) {
+			if ($scope.vm.renda_bruta.selecionado == null || $scope.vm.processos_secagem.selecionado == null || $scope.vm.selectedState == null || $scope.vm.selectedState == '' || $scope.vm.selectedCity == null || $scope.vm.selectedCity == ''){
+				return false;
+			}
+		} else if (step >= 4) {
+			if ($scope.vm.resultado.produto_escolhido == null){
+				return false;
+			}
+		}
+		
+		$scope.validationOn = false;
+		return true;
+	}
+	
     
     $scope.vm.getStepTemplate = function(){
       for (var i = 0; i < $scope.vm.steps.length; i++) {
@@ -236,9 +264,28 @@ angular.module('app', ['br.cidades.estados'])
 	
     $scope.estados = brCidadesEstados.estados;
 
-    $scope.buscarCidadesPorSigla = function(){
-      $scope.cidades = brCidadesEstados.buscarCidadesPorSigla($scope.vm.selectedState.sigla);
+    $scope.buscarCidadesPorSigla = function() {
+		if ($scope.vm.selectedState != null) {
+			$scope.cidades = brCidadesEstados.buscarCidadesPorSigla($scope.vm.selectedState.sigla);
+		}
     }
+	
+	
+	$scope.format = function () {
+	  // The string containing the format items (e.g. "{0}")
+	  // will and always has to be the first argument.
+	  var theString = arguments[0];
+
+	  // start with the second argument (i = 1)
+	  for (var i = 1; i < arguments.length; i++) {
+		  // "gm" = RegEx options for Global search (more than one instance)
+		  // and for Multiline search
+		  var regEx = new RegExp("\\{" + (i - 1) + "\\}", "gm");
+		  theString = theString.replace(regEx, arguments[i]);
+	  }
+
+	  return theString;
+  }
     
     // Declare a reference to the form, which will be 'form.test' on the page
     $scope.form = { };
