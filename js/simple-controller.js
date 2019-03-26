@@ -179,7 +179,7 @@ angular.module('app', ['br.cidades.estados'])
 	
 	$scope.vm.validateStep = function(step) {
 		$scope.validationOn = true;
-	/*
+	
 		if (step >= 2 && step <4) {
 			if ($scope.vm.renda_bruta.selecionado == null || $scope.vm.processos_secagem.selecionado == null || $scope.vm.selectedState == null || $scope.vm.selectedState == '' || $scope.vm.selectedCity == null || $scope.vm.selectedCity == ''){
 				return false;
@@ -188,7 +188,7 @@ angular.module('app', ['br.cidades.estados'])
 			if ($scope.vm.resultado.produto_escolhido == null){
 				return false;
 			}
-		}*/
+		}
 		
 		$scope.validationOn = false;
 		return true;
