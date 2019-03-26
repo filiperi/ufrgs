@@ -6,6 +6,15 @@
 
 /* The slider itself */
 .slider {
-  width: 85%; /* Full-width */
+  width: 94%; /* Full-width */
   height: 10px; /* Specified height */
+}
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+.borders {
+    border:1px solid #999;
 }

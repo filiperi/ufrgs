@@ -133,7 +133,7 @@ angular.module('app', ['br.cidades.estados'])
 		  escolha_final : {titulo:"Escolha final", paragrafos: [{texto:"Você optou pelo(a) {0} do produto {1} por R$ {2} com estes itens adicionais: {3}"}, {texto: "Com R$ {4} por mês você poderia {5} esses mesmos itens. Sabendo disso, você manteria a opção de {0}?"}]},
 		  interesse: [
 		  {value:0,min:0,max:1600,texto:"Você teria interesse nos seguintes serviços adicionais da oferta integrada de produtos e serviços?",opcoes: [{texto:"Sem manutenção"},{texto:"Manutenção Corretiva"},{texto:"Manutenção Corretiva e Preventiva"}]},
-		  {value:0,min:0,max:2500,texto:"Geração de relatórios da situação atual dos grãos secos e armazenados no(s) silo(s)?",opcoes: [{texto:"Sem relatório"},{texto:"Relatório de Secagem – umidade, temperatura da máquina, temperatura da secagem do grão, qualidade da água, energia consumida e, se solicitado controle da emissão de CO2"},{texto:"Relatório de Secagem e Armazenagem – além dos dados da secagem, são fornecidos dados da temperatura da massa do grão, umidade do silo, presença de fungos e micotoxinas e, avisos para a realização de manutenções"}]},
+		  {value:0,min:0,max:2500,texto:"Geração de relatórios da situação atual dos grãos secos e armazenados no(s) silo(s)",opcoes: [{texto:"Sem relatório"},{texto:"Relatório de Secagem – umidade, temperatura da máquina, temperatura da secagem do grão, qualidade da água, energia consumida e, se solicitado controle da emissão de CO2"},{texto:"Relatório de Secagem e Armazenagem – além dos dados da secagem, são fornecidos dados da temperatura da massa do grão, umidade do silo, presença de fungos e micotoxinas e, avisos para a realização de manutenções"}]},
 		  {value:0,min:0,max:500,texto:"Tipo de Energia para o funcionamento do silo",opcoes: [{texto:"Energia elétrica"},{texto:"Painel solar em metade da parte superior do silo: Propicia redução parcial no consumo de Energia Elétrica"},{texto:"Painel solar em toda a parte superior do silo: Propicia redução total no consumo de Energia Elétrica"}]},
 		  {value:0,min:0,max:1000,texto:"Tipo de Energia para o funcionamento do silo",opcoes: [{texto:"Energia elétrica"},{texto:"Painel solar em toda a parte superior de 1 silo: Propicia redução parcial no consumo de Energia Elétrica"},{texto:"Painel solar em toda a parte superior de 2 silos: Propicia redução total no consumo de Energia Elétrica"}]}
 		 ],
@@ -179,7 +179,7 @@ angular.module('app', ['br.cidades.estados'])
 	
 	$scope.vm.validateStep = function(step) {
 		$scope.validationOn = true;
-	
+	/*
 		if (step >= 2 && step <4) {
 			if ($scope.vm.renda_bruta.selecionado == null || $scope.vm.processos_secagem.selecionado == null || $scope.vm.selectedState == null || $scope.vm.selectedState == '' || $scope.vm.selectedCity == null || $scope.vm.selectedCity == ''){
 				return false;
@@ -188,7 +188,7 @@ angular.module('app', ['br.cidades.estados'])
 			if ($scope.vm.resultado.produto_escolhido == null){
 				return false;
 			}
-		}
+		}*/
 		
 		$scope.validationOn = false;
 		return true;
