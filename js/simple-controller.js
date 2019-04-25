@@ -1,9 +1,9 @@
 // Simple AngularJS controller for text field validation example
 
-angular.module('app', ['br.cidades.estados'])
+angular.module('app', ['br.cidades.estados','firebase'])
 
   // only the one controller in this little example
-  .controller('AppCtrl', function($scope, $window, $parse, brCidadesEstados) {
+  .controller('AppCtrl', function($scope, $window, $parse, brCidadesEstados, $firebaseArray) {
       
     // Page data model, initially blank ('pristine') with our own status tracking
     $scope.model = { 
@@ -48,6 +48,11 @@ angular.module('app', ['br.cidades.estados'])
         name: "Escolha final",
         template: "step6.html"
       },  
+	  {
+		step: 7,
+		name: "Finalização",
+		template: "step7.html"
+	  } 
     ];
     
     //Cada item na variavel apresentação é um novo parágrafo.
@@ -76,11 +81,11 @@ angular.module('app', ['br.cidades.estados'])
           pergunta: "Qual a situação atual de seu processo de secagem?",
           selecionado: null,
           respostas: [
-            {name: "Não possui silo e entrega a produção para cooperativas"},
-            {name: "Não possui silo e entrega a produção para indústrias alimentícias"},
-            {name: "Possui silo de secagem com ar natural"},
-            {name: "Possui silo de secagem com GLP (Gás Liquefeito de Petróleo)"},
-            {name: "Possui silo de secagem com lenha"},
+            {uid: 0, name: "Não possui silo e entrega a produção para cooperativas"},
+            {uid: 1, name: "Não possui silo e entrega a produção para indústrias alimentícias"},
+            {uid: 2, name: "Possui silo de secagem com ar natural"},
+            {uid: 3, name: "Possui silo de secagem com GLP (Gás Liquefeito de Petróleo)"},
+            {uid: 4, name: "Possui silo de secagem com lenha"},
         ]
     };
     
@@ -89,16 +94,16 @@ angular.module('app', ['br.cidades.estados'])
           hint: "Observação: Marcar as principais culturas, que geram maior renda",
           selecionado: null,
           respostas: [
-            {name: "Arroz"},
-            {name: "Aveia"},
-            {name: "Cevada"},
-            {name: "Feijão"},
-            {name: "Girassol"},
-            {name: "Milho"},
-            {name: "Soja"},
-            {name: "Sorgo"},
-            {name: "Trigo"},
-            {name: "Outros"}
+            {name: "Arroz", checked:false},
+            {name: "Aveia", checked:false},
+            {name: "Cevada", checked:false},
+            {name: "Feijão", checked:false},
+            {name: "Girassol", checked:false},
+            {name: "Milho", checked:false},
+            {name: "Soja", checked:false},
+            {name: "Sorgo", checked:false},
+            {name: "Trigo", checked:false},
+            {name: "Outros", checked:false}
         ]
     };
     
@@ -107,10 +112,10 @@ angular.module('app', ['br.cidades.estados'])
           hint: "1 hectare é equivalente a 10.000 m² ou 1 alqueire é equivalente a 4,84 hectares",
           selecionado: null,
           respostas: [
-            {name: "Pequeno produtor: até 20 hectares"},
-            {name: "Médio produtor: superior a 20 hectares e até 100 hectares"},
-            {name: "Grande produtor: superior a 100 hectares e até 500 hectares"},
-            {name: "Super produtor: superior a 500 hectares"}
+            {uid: 0, name: "Pequeno produtor: até 20 hectares"},
+            {uid: 1, name: "Médio produtor: superior a 20 hectares e até 100 hectares"},
+            {uid: 2, name: "Grande produtor: superior a 100 hectares e até 500 hectares"},
+            {uid: 3, name: "Super produtor: superior a 500 hectares"}
         ]
     };
 	
@@ -204,12 +209,31 @@ angular.module('app', ['br.cidades.estados'])
     }
     
     $scope.vm.save = function() {
-      alert(
-        "Saving form... \n\n" + 
-        "Name: " + $scope.vm.user.name + "\n" + 
-        "Email: " + $scope.vm.user.email + "\n" + 
-        "Age: " + $scope.vm.user.age);
-    }  
+		var json = $scope.vm.culturas.respostas;
+		alert(JSON.stringify(json));
+		
+		var result = 
+			 {
+				 "cidade": $scope.vm.selectedCity,
+				 "estado": $scope.vm.selectedState.sigla,
+				 "rb":$scope.vm.renda_bruta.selecionado, //renda bruta
+				 "tc":$scope.vm.resultado.tipo_compra, //tipo de compra
+				 "vm": $scope.vm.produtos.interesse[0].value, //valor manutencao
+				 "vr": $scope.vm.produtos.interesse[1].value, // valor relatorio
+				 "ve": $scope.vm.produtos.interesse[3].value, // valor energia
+				 "vp": $scope.vm.sum(),
+				 "pe": $scope.vm.resultado.produto_escolhido.id
+			 };
+	
+		alert(result);
+	
+		return;
+		var ref = firebase.database().ref();
+		
+ 		// download the data into a local object
+		var array = $firebaseArray(ref);
+		array.$add({id: 'asd'});
+	}  
       
       
     $scope.selecionarProduto = function (index, bloco) {

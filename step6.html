@@ -10,7 +10,7 @@
 			</div>
 			<div class="col-sm-10">
 				<p class="lead text-justify" ng-repeat="paragrafo in vm.produtos.escolha_final.paragrafos">
-					{{ format(paragrafo.texto, vm.resultado.tipo_compra, vm.resultado.produto_escolhido.id, (vm.resultado.tipo_compra =='Compra' ? vm.resultado.produto_escolhido.compra : vm.resultado.produto_escolhido.aluguel), "TBD", (vm.resultado.tipo_compra =='Compra' ? vm.resultado.produto_escolhido.aluguel : vm.resultado.produto_escolhido.compra), 	(vm.resultado.tipo_compra =='Compra' ? "Alugar" : "Comprar")) }}
+					{{ format(paragrafo.texto, vm.resultado.tipo_compra, vm.resultado.produto_escolhido.id, (vm.resultado.tipo_compra =='Compra' ? vm.resultado.produto_escolhido.compra : vm.resultado.produto_escolhido.aluguel), "TBD", (vm.resultado.tipo_compra =='Compra' ? vm.resultado.produto_escolhido.aluguel : vm.resultado.produto_escolhido.compra), 	(vm.resultado.tipo_compra =='Compra' ? "alugar" : "comprar")) }}
 				</p>
 			</div>
 			<div class="col-sm-1">

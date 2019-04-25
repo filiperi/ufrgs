@@ -1,0 +1,125 @@
+    <div class="container">
+      <header class="row">
+        <h1 class="col-sm-12">Finalização</h1>
+        <p class="col-sm-12"></p>
+      </header>
+      
+      <!-- Form with input field examples, submit handled by controller function -->
+      <form role="form" name="form.test" id="form.test" novalidate class="col-sm-12">
+        
+        <div class="form-group">
+             <p class="row col-sm-12 lead">Gênero</p>
+             
+            <div class="btn-group">
+              <button type="button" class="btn btn-default"> {{vm.processos_secagem.selecionado != null ? vm.processos_secagem.selecionado : "Escolha uma opção clicando aqui!"}}</button>
+              
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li ng-repeat="processo in vm.processos_secagem.respostas"><a ng-click="setSelecionado(vm.processos_secagem, processo.name)">{{ processo.name }} </a></li>
+              </ul>
+            </div>
+			<div class="alert alert-danger" ng-if="validationOn && vm.processos_secagem.selecionado == null">
+				<strong>Alerta!</strong> {{vm.erros.campo_requerido}}.
+			</div>
+        </div>
+		
+		 <div class="form-group">
+             <p class="row col-sm-12 lead">Idade</p>
+             
+            <div class="btn-group">
+              <button type="button" class="btn btn-default"> {{vm.processos_secagem.selecionado != null ? vm.processos_secagem.selecionado : "Escolha uma opção clicando aqui!"}}</button>
+              
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li ng-repeat="processo in vm.processos_secagem.respostas"><a ng-click="setSelecionado(vm.processos_secagem, processo.name)">{{ processo.name }} </a></li>
+              </ul>
+            </div>
+			<div class="alert alert-danger" ng-if="validationOn && vm.processos_secagem.selecionado == null">
+				<strong>Alerta!</strong> {{vm.erros.campo_requerido}}.
+			</div>
+        </div>
+        
+		 <div class="form-group">
+             <p class="row col-sm-12 lead">Como você toma suas decisões?</p>
+             
+            <div class="btn-group">
+              <button type="button" class="btn btn-default"> {{vm.processos_secagem.selecionado != null ? vm.processos_secagem.selecionado : "Escolha uma opção clicando aqui!"}}</button>
+              
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li ng-repeat="processo in vm.processos_secagem.respostas"><a ng-click="setSelecionado(vm.processos_secagem, processo.name)">{{ processo.name }} </a></li>
+              </ul>
+            </div>
+			<div class="alert alert-danger" ng-if="validationOn && vm.processos_secagem.selecionado == null">
+				<strong>Alerta!</strong> {{vm.erros.campo_requerido}}.
+			</div>
+        </div>
+		
+		 <div class="form-group">
+             <p class="row col-sm-12 lead">Selecione a opção de o que é para você decisivo na aquisição de um produto/serviço? </p>
+             
+            <div class="btn-group">
+              <button type="button" class="btn btn-default"> {{vm.processos_secagem.selecionado != null ? vm.processos_secagem.selecionado : "Escolha uma opção clicando aqui!"}}</button>
+              
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li ng-repeat="processo in vm.processos_secagem.respostas"><a ng-click="setSelecionado(vm.processos_secagem, processo.name)">{{ processo.name }} </a></li>
+              </ul>
+            </div>
+			<div class="alert alert-danger" ng-if="validationOn && vm.processos_secagem.selecionado == null">
+				<strong>Alerta!</strong> {{vm.erros.campo_requerido}}.
+			</div>
+        </div>
+		
+		<div class="form-group">
+             <p class="row col-sm-12 lead">Como se classifica, quando pensa na sustentabilidade?</p>
+             
+            <div class="btn-group">
+              <button type="button" class="btn btn-default"> {{vm.processos_secagem.selecionado != null ? vm.processos_secagem.selecionado : "Escolha uma opção clicando aqui!"}}</button>
+              
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li ng-repeat="processo in vm.processos_secagem.respostas"><a ng-click="setSelecionado(vm.processos_secagem, processo.name)">{{ processo.name }} </a></li>
+              </ul>
+            </div>
+			<div class="alert alert-danger" ng-if="validationOn && vm.processos_secagem.selecionado == null">
+				<strong>Alerta!</strong> {{vm.erros.campo_requerido}}.
+			</div>
+        </div>
+        
+         <div class="form-group">
+             <p class="row col-sm-12 lead">Gostaria de receber um relatório final desta pesquisa por e-mail? Favor deixar seu e-mail:</p>			
+             
+            <div class="btn-group">
+              <button type="button" class="btn btn-default"> {{vm.renda_bruta.selecionado != null ? vm.renda_bruta.selecionado : "Escolha uma opção clicando aqui!"}}</button>
+              
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li ng-repeat="processo in vm.renda_bruta.respostas"><a ng-click="setSelecionado(vm.renda_bruta, processo.name)">{{ processo.name }} </a></li>
+              </ul>
+            </div>
+			<div class="alert alert-danger" ng-if="validationOn && vm.renda_bruta.selecionado == null">
+					<strong>Alerta!</strong> {{vm.erros.campo_requerido}}.
+			</div>
+        </div>
+        
+      </form>
+    </div>

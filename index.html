@@ -11,9 +11,25 @@
     <script src="./js/bootstrap.min.js" data-semver="3.3.6" data-require="bootstrap@3.3.6"></script>
     <script src="./js/simple-controller.js"></script>
     <script src="./js/cidades-estados.js"></script>
+	<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
     
     <link href="style.css" rel="stylesheet" />
     
+
+	<script>
+	  // Initialize Firebase
+	  var config = {
+		apiKey: "AIzaSyB4_P5yvAozFDp-rvyoPgjFSmrsmtaKixg",
+		authDomain: "ufrgs-pesquisa.firebaseapp.com",
+		databaseURL: "https://ufrgs-pesquisa.firebaseio.com",
+		projectId: "ufrgs-pesquisa",
+		storageBucket: "ufrgs-pesquisa.appspot.com",
+		messagingSenderId: "984630699004"
+	  };
+	  firebase.initializeApp(config);
+	</script>
+	
   </head>
   <body ng-app="app">
     <div class="container">

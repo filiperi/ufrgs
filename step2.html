@@ -11,7 +11,7 @@
             <p class="row col-sm-12 lead">1.{{vm.culturas.pergunta}}</p>
             
             <label class="checkbox-inline" ng-repeat="cultura in vm.culturas.respostas"> 
-              <input type="checkbox" value="{{cultura.name}}">{{cultura.name}}
+              <input type="checkbox" value="{{cultura.name}}" ng-model="cultura.checked">{{cultura.name}}
             </label>
         </div>
         
@@ -49,7 +49,7 @@
                 <span class="sr-only">Toggle Dropdown</span>
               </button>
               <ul class="dropdown-menu" role="menu">
-                <li ng-repeat="processo in vm.processos_secagem.respostas"><a ng-click="setSelecionado(vm.processos_secagem, processo.name)">{{ processo.name }} </a></li>
+                <li ng-repeat="processo in vm.processos_secagem.respostas"><a ng-click="setSelecionado(vm.processos_secagem, processo.uid)">{{ processo.name }} </a></li>
               </ul>
             </div>
 			<div class="alert alert-danger" ng-if="validationOn && vm.processos_secagem.selecionado == null">
@@ -69,7 +69,7 @@
                 <span class="sr-only">Toggle Dropdown</span>
               </button>
               <ul class="dropdown-menu" role="menu">
-                <li ng-repeat="processo in vm.renda_bruta.respostas"><a ng-click="setSelecionado(vm.renda_bruta, processo.name)">{{ processo.name }} </a></li>
+                <li ng-repeat="processo in vm.renda_bruta.respostas"><a ng-click="setSelecionado(vm.renda_bruta, processo.uid)">{{ processo.name }} </a></li>
               </ul>
             </div>
 			<div class="alert alert-danger" ng-if="validationOn && vm.renda_bruta.selecionado == null">
