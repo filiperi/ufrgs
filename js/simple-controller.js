@@ -1,6 +1,6 @@
 // Simple AngularJS controller for text field validation example
 
-angular.module('app', ['br.cidades.estados','firebase'])
+angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
 
   // only the one controller in this little example
   .controller('AppCtrl', function($scope, $window, $parse, brCidadesEstados, $firebaseArray) {
@@ -92,18 +92,18 @@ angular.module('app', ['br.cidades.estados','firebase'])
   $scope.vm.culturas = { 
           pergunta: "Quais tipos de cultura você trabalha?",
           hint: "Observação: Marcar as principais culturas, que geram maior renda",
-          selecionado: null,
+          selecionado: [],
           respostas: [
-            {name: "Arroz", checked:false},
-            {name: "Aveia", checked:false},
-            {name: "Cevada", checked:false},
-            {name: "Feijão", checked:false},
-            {name: "Girassol", checked:false},
-            {name: "Milho", checked:false},
-            {name: "Soja", checked:false},
-            {name: "Sorgo", checked:false},
-            {name: "Trigo", checked:false},
-            {name: "Outros", checked:false}
+            {name: "Arroz"},
+            {name: "Aveia"},
+            {name: "Cevada"},
+            {name: "Feijão"},
+            {name: "Girassol"},
+            {name: "Milho"},
+            {name: "Soja"},
+            {name: "Sorgo"},
+            {name: "Trigo"},
+            {name: "Outros"}
         ]
     };
     
@@ -209,15 +209,20 @@ angular.module('app', ['br.cidades.estados','firebase'])
     }
     
     $scope.vm.save = function() {
-		var json = $scope.vm.culturas.respostas;
-		alert(JSON.stringify(json));
+		var culturas = [];
 		
+		angular.forEach($scope.vm.culturas.respostas.selecionado, function(item){
+			culturas.push(item.name);
+        });
+			   
 		var result = 
 			 {
 				 "cidade": $scope.vm.selectedCity,
 				 "estado": $scope.vm.selectedState.sigla,
+				 "ct": culturas,
 				 "rb":$scope.vm.renda_bruta.selecionado, //renda bruta
 				 "tc":$scope.vm.resultado.tipo_compra, //tipo de compra
+				 "ps":$scope.vm.processos_secagem.selecionado,//processo secagem
 				 "vm": $scope.vm.produtos.interesse[0].value, //valor manutencao
 				 "vr": $scope.vm.produtos.interesse[1].value, // valor relatorio
 				 "ve": $scope.vm.produtos.interesse[3].value, // valor energia
@@ -225,7 +230,7 @@ angular.module('app', ['br.cidades.estados','firebase'])
 				 "pe": $scope.vm.resultado.produto_escolhido.id
 			 };
 	
-		alert(result);
+		alert(JSON.stringify(result));
 	
 		return;
 		var ref = firebase.database().ref();
