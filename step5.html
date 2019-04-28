@@ -62,7 +62,7 @@
 
 					<div class="row">
 						<div class="col-xs-10 nopadding">
-							<p class="lead">12. {{vm.produtos.interesse[1].texto}}</p>
+							<p class="lead">12. {{vm.produtos.interesse[1].texto}} (Valores por mês)</p>
 						</div>
 					</div>
 
@@ -95,7 +95,7 @@
 					<div ng-if="vm.resultado.unico_silo == true">
 						<div class="row">
 							<div class="col-xs-12 nopadding">
-								<p class="lead">13. {{vm.produtos.interesse[2].texto}}</p>
+								<p class="lead">13. {{vm.produtos.interesse[2].texto}} (Valores por mês)</p>
 							</div>
 						</div>
 						<div class="row">
@@ -174,7 +174,8 @@
 							<label>Geração de relatórios: {{vm.produtos.interesse[1].value | currency:'R$'}}</label>
 						</div>
 						<div class="row">
-							<label>Tipo de Energia: {{vm.produtos.interesse[2].value | currency:'R$'}}</label>
+							<label ng-if="vm.resultado.unico_silo == true">Tipo de Energia: {{vm.produtos.interesse[2].value | currency:'R$'}}</label>
+							<label ng-if="vm.resultado.unico_silo == false">Tipo de Energia: {{vm.produtos.interesse[3].value | currency:'R$'}}</label>
 						</div>
 						
 						<div class="row">
