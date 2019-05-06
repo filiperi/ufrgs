@@ -34,6 +34,9 @@
 					<input type="number" ng-model="vm.produtos.caracterizacao.idade.selecionado" min="0"/>
 				</div>	
 			</div>
+			
+			<div class="row form-group">
+			</div>
         
 			<div class="row form-group">
 				<div class="col-sm-8">
@@ -42,17 +45,17 @@
 					  <thead>
 						<tr>
 						  <th scope="col"></th>
-						  <th scope="col">Sim</th>
-						  <th scope="col">Mais ou menos</th>
-						  <th scope="col">Não</th>
+						  <th scope="col" align="center">Sim</th>
+						  <th scope="col" align="center">Mais ou menos</th>
+						  <th scope="col" align="center">Não</th>
 						</tr>
 					  </thead>
 					  <tbody>
 						<tr ng-repeat="decisoes in vm.produtos.caracterizacao.decisoes">
 							<td>{{decisoes.texto}}</td>
-							<td><input type="radio" ng-model="decisoes.selecionado" value="0"></td>
-							<td><input type="radio" ng-model="decisoes.selecionado" value="1"></td>
-							<td><input type="radio" ng-model="decisoes.selecionado" value="2"></td>
+							<td align="center"><input type="radio" ng-model="decisoes.selecionado" value="0"></td>
+							<td align="center"><input type="radio" ng-model="decisoes.selecionado" value="1"></td>
+							<td align="center"><input type="radio" ng-model="decisoes.selecionado" value="2"></td>
 						</tr>
 					  </tbody>
 					</table>
@@ -85,9 +88,11 @@
 			</div>
 		
 				
+			<div class="row form-group">
+			</div>
 	
 			<div class="row form-group">
-				<div class="col-sm-9 nopadding">
+				<div class="col-sm-8 nopadding">
 					 <p class="lead nopadding">Como se classifica, quando pensa na sustentabilidade?</p>
 					 <table class="table">
 					  <thead>
@@ -101,9 +106,9 @@
 					  <tbody>
 						<tr ng-repeat="decisoes in vm.produtos.caracterizacao.sustentabilidade">
 							<td>{{decisoes.texto}}</td>
-							<td><input type="radio" ng-model="decisoes.selecionado" value="0"></td>
-							<td><input type="radio" ng-model="decisoes.selecionado" value="1"></td>
-							<td><input type="radio" ng-model="decisoes.selecionado" value="2"></td>
+							<td align="center"><input type="radio" ng-model="decisoes.selecionado" value="0"></td>
+							<td align="center"><input type="radio" ng-model="decisoes.selecionado" value="1"></td>
+							<td align="center"><input type="radio" ng-model="decisoes.selecionado" value="2"></td>
 						</tr>
 					  </tbody>
 					</table>
@@ -116,6 +121,27 @@
 					<input type="text">
 				</div>
 			</div>
+		</div>
+		
+		
+		
+		<div id="myModal" class="modal fade" role="dialog">
+			  <div class="modal-dialog modal-lg">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Obrigado por responder</h4>
+				  </div>
+				  <div class="modal-body">
+						<img ng-src="img/obrigado.png">
+				  </div>
+				  <div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="refresh()">Fechar</button>
+				  </div>
+				</div>
+			  </div>
 		</div>
         
       </form>

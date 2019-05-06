@@ -81,11 +81,11 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
           pergunta: "Qual a situação atual de seu processo de secagem?",
           selecionado: null,
           respostas: [
-            {uid: 0, name: "Não possui silo e entrega a produção para cooperativas"},
-            {uid: 1, name: "Não possui silo e entrega a produção para indústrias alimentícias"},
-            {uid: 2, name: "Possui silo de secagem com ar natural"},
-            {uid: 3, name: "Possui silo de secagem com GLP (Gás Liquefeito de Petróleo)"},
-            {uid: 4, name: "Possui silo de secagem com lenha"},
+            {index: 0, name: "Não possui silo e entrega a produção para cooperativas"},
+            {index: 1, name: "Não possui silo e entrega a produção para indústrias alimentícias"},
+            {index: 2, name: "Possui silo de secagem com ar natural"},
+            {index: 3, name: "Possui silo de secagem com GLP (Gás Liquefeito de Petróleo)"},
+            {index: 4, name: "Possui silo de secagem com lenha"},
         ]
     };
     
@@ -112,10 +112,10 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
           hint: "1 hectare é equivalente a 10.000 m² ou 1 alqueire é equivalente a 4,84 hectares",
           selecionado: null,
           respostas: [
-            {uid: 0, name: "Pequeno produtor: até 20 hectares"},
-            {uid: 1, name: "Médio produtor: superior a 20 hectares e até 100 hectares"},
-            {uid: 2, name: "Grande produtor: superior a 100 hectares e até 500 hectares"},
-            {uid: 3, name: "Super produtor: superior a 500 hectares"}
+            {index: 0, name: "Pequeno produtor: até 20 hectares"},
+            {index: 1, name: "Médio produtor: superior a 20 hectares e até 100 hectares"},
+            {index: 2, name: "Grande produtor: superior a 100 hectares e até 500 hectares"},
+            {index: 3, name: "Super produtor: superior a 500 hectares"}
         ]
     };
 	
@@ -207,11 +207,14 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
 			if ($scope.vm.renda_bruta.selecionado == null || $scope.vm.processos_secagem.selecionado == null || $scope.vm.selectedState == null || $scope.vm.selectedState == '' || $scope.vm.selectedCity == null || $scope.vm.selectedCity == ''){
 				return false;
 			}
-		} else if (step >= 4) {
+		} else if (step >= 4 && step <= 6) {
 			if ($scope.vm.resultado.produto_escolhido == null){
 				return false;
 			}
+		} else if (step >= 7) {
+		
 		}
+		
 		
 		$scope.validationOn = false;
 		return true;
@@ -232,7 +235,7 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
 		angular.forEach($scope.vm.culturas.respostas.selecionado, function(item){
 			culturas.push(item.name);
         });
-			   
+			  
 		var result = 
 			 {
 				 "cidade": $scope.vm.selectedCity,
@@ -246,19 +249,26 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
 				 "ve": $scope.vm.produtos.interesse[3].value, // valor energia
 				 "vp": $scope.vm.sum(),
 				 "pe": $scope.vm.resultado.produto_escolhido.id,
-				 "ef": $scope.vm.produtos.escolha_final.selecionado
+				 "ef": $scope.vm.produtos.escolha_final.selecionado,
+				 "genero": $scope.vm.produtos.caracterizacao.genero.selecionado,
+				 "idade" : $scope.vm.produtos.caracterizacao.idade.selecionado,
+				 "decisoes": $scope.vm.produtos.caracterizacao.decisoes,
+				 "aquisicao" : $scope.vm.produtos.caracterizacao.aquisicao.selecionado,
+				 "sustentabilidade": $scope.vm.produtos.caracterizacao.sustentabilidade
 			 };
 	
-		alert(JSON.stringify(result));
+		json = JSON.stringify(result);
 	
-		return;
 		var ref = firebase.database().ref();
 		
  		// download the data into a local object
 		var array = $firebaseArray(ref);
-		array.$add({id: 'asd'});
+		array.$add(json);
 	}  
-      
+	
+	$scope.refresh = function () {
+		$window.location.reload();
+	}
       
     $scope.selecionarProduto = function (index, bloco) {
         index++;
