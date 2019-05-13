@@ -1,6 +1,7 @@
 <div class="container">
 	<header class="row">
-		<h1 class="col-sm-12">Produtos</h1>
+		<h1 class="col-sm-12" ng-if="vm.produtos.selecionados.current < 5">Produto</h1>
+		<h1 class="col-sm-12" ng-if="vm.produtos.selecionados.current >= 5">Selecine o melhor produto</h1>
 	</header>
   
   <!-- Form with input field examples, submit handled by controller function -->
@@ -8,7 +9,7 @@
   
 		<div class="form-group">
 			<div class="row" ng-if="vm.produtos.selecionados.current < 5">
-				<div class="col-sm-12"><p class="lead">5. {{vm.produtos.qalternativas}}</p></div>
+				<div class="col-sm-12"><p class="lead"> {{vm.produtos.qalternativas}}</p></div>
 			</div>
 			
 			<div class="row" ng-repeat="imgElement in vm.produtos.items" ng-if="$index % 4 == 0">

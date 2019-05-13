@@ -59,13 +59,13 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
     //A ordem do texto é a mesma inserida aqui
     $scope.vm.apresentacao = [
         {
-            name: "Esta pesquisa trata de um novo sistema de secagem e armazenagem de grãos que evita o uso da lenha e do gás liquefeito de petróleo (GLP) para reduzir os desperdícios monetários para os agricultores e reduzir impactos ambientais. Ao responder essa pesquisa, você contribui com a criação de um conjunto de produtos e serviços com tecnologia de ponta desenvolvida pela Universidade Federal do Rio Grande do Sul – UFRGS."
+            name: "Esta pesquisa trata de um novo Sistema de secagem e armazenagem de grãos. Este Sistema evita o uso da lenha e do gás liquefeito de petróleo (GLP) para reduzir custos e impactos ambientais. Ao responder essa pesquisa, você contribui com a criação de um conjunto de produtos e serviços com tecnologia de ponta desenvolvida pela Universidade Federal do Rio Grande do Sul – UFRGS."
         },
         {
-            name: "O tempo de preenchimento é de aproximadamente 10 minutos. Os seus dados são confidenciais, permanecem em sigilo de pesquisa, não serão divulgados individualmente."
+            name: "O tempo de preenchimento é de aproximadamente 10 minutos. Os seus dados são confidenciais, sigilosos e não serão divulgados individualmente."
         },
         {
-            name: "A UFRGS e seus pesquisadores agradecem sua contribuição.  Esta pesquisa tem o apoio do Canal Rural e foi enviada aos principais municípios e propriedades de agronegócio brasileiras."
+            name: "A UFRGS e seus pesquisadores agradecem sua contribuição. Esta pesquisa tem o apoio do Canal Rural e foi enviada às principais propriedades do Agronegócio Brasileiro."
         },
         {
             name: "Sua opinião irá contribuir com o desenvolvimento de uma agricultura sustentável. Ao final da pesquisa, se tiver interesse em receber o relatório do estudo sem custo, deixe seu e-mail."
@@ -122,22 +122,22 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
     $scope.vm.resultado = {"produto_escolhido": null, "tipo_compra": null, "unico_silo": true};
     $scope.vm.erros = {"campo_requerido": "*Campo deve ser preenchido.", "produto_requerido": "Você deve selecionar as opções e selecionar um produto final."};
     $scope.vm.produtos = { 
-          qalternativas: "Dentre as alternativas de produto abaixo, qual você preferiria para o processo de secagem  de grãos?",
+          qalternativas: "Em relação à este cenário, qual dos quatro produtos você preferiria para o processo de secagem e armazenagem de grãos?",
           selecionados:  {"current":1, "bloco1": null, "bloco2": null, "bloco3":null, "bloco4":null, "escolha_usuario":null},
           introducao: {
                         titulo: "Preferências do silo de secagem e armazenagem de grãos",
-                        paragrafos: [{texto: "Uma nova tecnologia foi desenvolvida para melhorar o processo de secagem e armazenagem de grãos, esta tecnologia se baseia em uma máquina de secagem que a partir de água e energia elétrica fornece calor para secar o grão. Esta solução visa entregar um sistema composto por produtos e serviços que forneçam a gestão da secagem e armazenagem de grãos, podendo ser adquirida nas modalidades compra e aluguel. Inicialmente, serão questionadas as possíveis configurações da máquina de secagem, as seguintes alternativas para configurar o produto são:"}]
+                        paragrafos: [{texto: "Uma nova tecnologia está sendo desenvolvida para melhorar o processo de secagem e armazenagem de grãos. Esta tecnologia se baseia em uma máquina de secagem que a partir da água e da energia elétrica fornece calor para secar o grão. Esta solução visa entregar um sistema composto por produtos e serviços que forneçam a gestão parcial ou integral para a secagem e a armazenagem de grãos, podendo ser adquirida nas modalidades compra ou aluguel. Inicialmente, serão apresentadas 16 possibilidades de Produtos em 4 blocos. As possíveis configurações da máquina de secagem, são apresentadas a seguir:"}]
                         },
-          combinacao : [{texto: "Nesta seção, você identificará sua combinação que você preferiu em cada cenário apresentados entre as suas escolhas realizadas nas questões anteriores. Vamos apresentar novamente as alternativas que você escolheu e comparar entre eles o que você escolheria."}],
+          combinacao : [{texto: "Nesta seção, quatro produtos escolhidos anteriormente são apresentados, dentre essas, qual é a sua preferida?"}],
 		  adicionais : {texto: "Para o produto que você escolheu, se fosse adquiri-lo, qual a melhor modalidade de aquisição?", opcoes: [{texto:"Compra"},{texto: "Aluguel mensal"}]},
-		  escolha_final : {titulo:"Escolha final", selecionado: null,  paragrafos: [{texto:"Você optou pelo(a) {0} do produto {1} por R$ {2} com itens adicionais no valor total de {3}."}, {texto: "Com R$ {4} por mês você poderia {5} esses mesmos itens. Sabendo disso, você manteria a opção de {0}?"}]},
+		  escolha_final : {titulo:"Escolha final", selecionado: null,  paragrafos: [{texto:"Você optou pelo(a) {0} do produto {1} por R$ {2} com itens adicionais no valor total de R$ {3} (Manutenção: R$ {6}, Relatórios: R$ {7} e Energia: R$ {8})"}, {texto: "Com R$ {4} por mês você poderia {5} esse mesmo produto com os mesmos itens adicionais. Sabendo disso, você manteria a opção de {0}?"}]},
+		  calculadora: {titulo:"Até quanto pagaria para ter um serviço adicional? (deslize a régua para definir o valor)"},
 		  interesse: [
-		  {value:0,min:0,max:1600,texto:"Você teria interesse nos seguintes serviços adicionais da oferta integrada de produtos e serviços?",opcoes: [{texto:"Sem manutenção"},{texto:"Manutenção Corretiva"},{texto:"Manutenção Corretiva e Preventiva"}]},
-		  {value:0,min:0,max:2500,texto:"Geração de relatórios da situação atual dos grãos secos e armazenados no(s) silo(s)",opcoes: [{texto:"Sem relatório"},{texto:"Relatório de Secagem – umidade, temperatura: máquina e secagem, energia e controle da emissão de CO2"},{texto:"Relatório de Secagem e Armazenagem – umidade, temperatura da máquina e secagem, energia e controle da emissão de CO2, análise do grão: temperatura, presença de fungos e micotoxinas"}]},
-		  {value:0,min:0,max:500,texto:"Tipo de Energia para o funcionamento do silo",opcoes: [{texto:"Energia elétrica"},{texto:"Painel solar em metade da parte superior do silo: Propicia redução parcial no consumo de Energia Elétrica"},{texto:"Painel solar em toda a parte superior do silo: Propicia redução total no consumo de Energia Elétrica"}]},
+		  {value:0,min:0,max:1600,texto:"Para obter: Manutenção (Valores por mês)",opcoes: [{texto:"Sem manutenção"},{texto:"Manutenção Corretiva"},{texto:"Manutenção Corretiva e Preventiva"}]},
+		  {value:0,min:0,max:2500,texto:"Para obter: Geração de relatórios da situação atual dos grãos secos e armazenados no(s) silo(s)",opcoes: [{texto:"Sem relatório"},{texto:"Relatório de Secagem – umidade, temperatura: máquina e secagem, energia e controle da emissão de CO2"},{texto:"Relatório de Secagem e Armazenagem – umidade, temperatura da máquina e secagem, energia e controle da emissão de CO2, análise do grão: temperatura, presença de fungos e micotoxinas"}]},
+		  {value:0,min:0,max:500,texto:"Para obter: Tipo de Energia para o funcionamento do silo",opcoes: [{texto:"Energia elétrica"},{texto:"Painel solar em metade da parte superior do silo: Propicia redução parcial no consumo de Energia Elétrica"},{texto:"Painel solar em toda a parte superior do silo: Propicia redução total no consumo de Energia Elétrica"}]},
 		  {value:0,min:0,max:1000,texto:"Tipo de Energia para o funcionamento do silo",opcoes: [{texto:"Energia elétrica"},{texto:"Painel solar em toda a parte superior de 1 silo: Propicia redução parcial no consumo de Energia Elétrica"},{texto:"Painel solar em toda a parte superior de 2 silos: Propicia redução total no consumo de Energia Elétrica"}]}
 		 ],
-		  
 		  caracterizacao : { 
 				genero: {opcoes: ["Masculino", "Feminino"], selecionado: null}, 
 				idade: {selecionado: null},
@@ -202,7 +202,7 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
 	
 	$scope.vm.validateStep = function(step) {
 		$scope.validationOn = true;
-	
+		/*
 		if (step >= 2 && step <4) {
 			if ($scope.vm.renda_bruta.selecionado == null || $scope.vm.processos_secagem.selecionado == null || $scope.vm.selectedState == null || $scope.vm.selectedState == '' || $scope.vm.selectedCity == null || $scope.vm.selectedCity == ''){
 				return false;
@@ -213,7 +213,7 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
 			}
 		} else if (step >= 7) {
 		
-		}
+		}*/
 		
 		
 		$scope.validationOn = false;
@@ -303,6 +303,16 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
 				return valueRetAluguel;
 			}
 			return valueRetCompra;
+		}
+		return 0;
+	}
+	
+	$scope.vm.sumAdicional = function (){ 
+		if ($scope.vm.resultado.produto_escolhido != null) {
+		
+			var total = ($scope.vm.produtos.interesse[0].value - 0) + ($scope.vm.produtos.interesse[1].value - 0) + ($scope.vm.produtos.interesse[2].value - 0) + ($scope.vm.produtos.interesse[3].value - 0);
+			
+			return total;
 		}
 		return 0;
 	}
