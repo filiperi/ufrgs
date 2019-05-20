@@ -22,7 +22,7 @@
 							<li ng-repeat="processo in vm.produtos.caracterizacao.genero.opcoes"><a ng-click="setSelecionado(vm.produtos.caracterizacao.genero, processo)">{{ processo }} </a></li>
 						  </ul>
 					</div>
-					<div class="alert alert-danger" ng-if="validationOn && vm.processos_secagem.selecionado == null">
+					<div class="alert alert-danger" ng-if="validationOn && vm.produtos.caracterizacao.genero.selecionado == null">
 						<strong>Alerta!</strong> {{vm.erros.campo_requerido}}.
 					</div>
 				</div>
@@ -60,15 +60,16 @@
 					  </tbody>
 					</table>
 				</div>
-				<div class="alert alert-danger" ng-if="validationOn && vm.processos_secagem.selecionado == null">
-					<strong>Alerta!</strong> {{vm.erros.campo_requerido}}.
-				</div>
+			</div>
+			
+			<div class="alert alert-danger" ng-if="validationOn && !vm.produtos.caracterizacao.validations.decisoes">
+				<strong>Alerta!</strong> {{vm.erros.campo_requerido}}.
 			</div>
 			
 			
 			<div class="row form-group">
 				<div class="col-sm-8">
-					 <p class="lead nopadding">Selecione a opção de o que é para você decisivo na aquisição de um produto/serviço? </p>
+					 <p class="lead nopadding">Selecione o que é decisivo para você na aquisição de um produto/serviço? </p>
 					 
 					<div class="btn-group">
 					  <button type="button" class="btn btn-default"> {{vm.produtos.caracterizacao.aquisicao.selecionado != null ? vm.produtos.caracterizacao.aquisicao.selecionado : "Escolha uma opção!"}}</button>
@@ -81,7 +82,7 @@
 						<li ng-repeat="respostas in vm.produtos.caracterizacao.aquisicao.respostas"><a ng-click="setSelecionado(vm.produtos.caracterizacao.aquisicao, respostas)">{{ respostas }} </a></li>
 					  </ul>
 					</div>
-					<div class="alert alert-danger" ng-if="validationOn && vm.processos_secagem.selecionado == null">
+					<div class="alert alert-danger" ng-if="validationOn && vm.produtos.caracterizacao.aquisicao.selecionado == null">
 						<strong>Alerta!</strong> {{vm.erros.campo_requerido}}.
 					</div>
 				</div>
@@ -112,8 +113,12 @@
 						</tr>
 					  </tbody>
 					</table>
+					<div class="alert alert-danger" ng-if="validationOn && !vm.produtos.caracterizacao.validations.sustentabilidade">
+						<strong>Alerta!</strong> {{vm.erros.campo_requerido}}.
+					</div>
 				</div>
 			</div>
+			
 		
 			<div class="row form-group">
 				<div class="col-sm-8">
@@ -123,7 +128,7 @@
 			</div>
 		</div>
 		
-		
+		<a href="" id="modalClick" data-toggle="modal" data-target="#myModal"></a>
 		
 		<div id="myModal" class="modal fade" role="dialog">
 			  <div class="modal-dialog modal-lg">

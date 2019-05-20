@@ -9,9 +9,13 @@
 		
 			<div class="col-sm-10">
 				<p class="lead text-justify" ng-repeat="paragrafo in vm.produtos.escolha_final.paragrafos">
-					{{ format(paragrafo.texto, vm.resultado.tipo_compra, vm.resultado.produto_escolhido.id, (vm.resultado.tipo_compra =='Compra' ? vm.resultado.produto_escolhido.compra : vm.resultado.produto_escolhido.aluguel), 
-					vm.sumAdicional(), 
-					(vm.resultado.tipo_compra =='Compra' ? vm.resultado.produto_escolhido.aluguel + vm.sumAdicional(): vm.resultado.produto_escolhido.compra + vm.sumAdicional()), 	(vm.resultado.tipo_compra =='Compra' ? "alugar" : "comprar"),
+					{{ format(paragrafo.texto,
+					vm.resultado.tipo_compra,
+					vm.resultado.produto_escolhido.id,
+					(vm.resultado.tipo_compra =='Compra' ? vm.resultado.produto_escolhido.compra : vm.resultado.produto_escolhido.aluguel),
+					vm.sumAdicional(),
+					(vm.resultado.tipo_compra =='Compra' ? (vm.resultado.produto_escolhido.aluguel + vm.sumAdicional()) + " por mês": vm.resultado.produto_escolhido.compra + vm.sumAdicional()), 	
+					(vm.resultado.tipo_compra =='Compra' ? "alugar" : "comprar"),
 					vm.produtos.interesse[0].value,
 					vm.produtos.interesse[1].value,
 					(vm.produtos.interesse[2].value - 0) + (vm.produtos.interesse[3].value - 0))}}

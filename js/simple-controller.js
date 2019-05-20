@@ -59,13 +59,10 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
     //A ordem do texto é a mesma inserida aqui
     $scope.vm.apresentacao = [
         {
-            name: "Esta pesquisa trata de um novo Sistema de secagem e armazenagem de grãos. Este Sistema evita o uso da lenha e do gás liquefeito de petróleo (GLP) para reduzir custos e impactos ambientais. Ao responder essa pesquisa, você contribui com a criação de um conjunto de produtos e serviços com tecnologia de ponta desenvolvida pela Universidade Federal do Rio Grande do Sul – UFRGS."
+            name: "Esta pesquisa trata de um novo Sistema de secagem e armazenagem de grãos. Este Sistema evita o uso da lenha e do gás liquefeito de petróleo para reduzir custos e impactos ambientais. Ao responder essa pesquisa, você contribui com a criação de um conjunto de produtos e serviços com tecnologia de ponta desenvolvida pela Universidade Federal do Rio Grande do Sul – UFRGS."
         },
         {
-            name: "O tempo de preenchimento é de aproximadamente 10 minutos. Os seus dados são confidenciais, sigilosos e não serão divulgados individualmente."
-        },
-        {
-            name: "A UFRGS e seus pesquisadores agradecem sua contribuição. Esta pesquisa tem o apoio do Canal Rural e foi enviada às principais propriedades do Agronegócio Brasileiro."
+            name: "O tempo de preenchimento é de aproximadamente 10 minutos. Os seus dados são confidenciais, sigilosos e não serão divulgados individualmente. A UFRGS e seus pesquisadores agradecem sua contribuição. Esta pesquisa tem o apoio do Canal Rural e foi enviada às principais propriedades do Agronegócio Brasileiro."
         },
         {
             name: "Sua opinião irá contribuir com o desenvolvimento de uma agricultura sustentável. Ao final da pesquisa, se tiver interesse em receber o relatório do estudo sem custo, deixe seu e-mail."
@@ -130,7 +127,7 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
                         },
           combinacao : [{texto: "Nesta seção, quatro produtos escolhidos anteriormente são apresentados, dentre essas, qual é a sua preferida?"}],
 		  adicionais : {texto: "Para o produto que você escolheu, se fosse adquiri-lo, qual a melhor modalidade de aquisição?", opcoes: [{texto:"Compra"},{texto: "Aluguel mensal"}]},
-		  escolha_final : {titulo:"Escolha final", selecionado: null,  paragrafos: [{texto:"Você optou pelo(a) {0} do produto {1} por R$ {2} com itens adicionais no valor total de R$ {3} (Manutenção: R$ {6}, Relatórios: R$ {7} e Energia: R$ {8})"}, {texto: "Com R$ {4} por mês você poderia {5} esse mesmo produto com os mesmos itens adicionais. Sabendo disso, você manteria a opção de {0}?"}]},
+		  escolha_final : {titulo:"Escolha final", selecionado: null,  paragrafos: [{texto:"Você optou pelo(a) {0} do produto {1} por R$ {2} com itens adicionais no valor total de R$ {3} (Manutenção: R$ {6}, Relatórios: R$ {7} e Energia: R$ {8})"}, {texto: "Com R$ {4} você poderia {5} esse mesmo produto com os mesmos itens adicionais. Sabendo disso, você manteria a opção de {0}?"}]},
 		  calculadora: {titulo:"Até quanto pagaria para ter um serviço adicional? (deslize a régua para definir o valor)"},
 		  interesse: [
 		  {value:0,min:0,max:1600,texto:"Para obter: Manutenção (Valores por mês)",opcoes: [{texto:"Sem manutenção"},{texto:"Manutenção Corretiva"},{texto:"Manutenção Corretiva e Preventiva"}]},
@@ -149,6 +146,7 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
 							{texto: "Gosto de ouvir a opinião dos outros antes de decidir", selecionado: null},
 							{texto: "Faço compras considerando o impacto ambiental dos produtos", selecionado: null},
 							],
+				validations: {decisoes:true, sustentabilidade:true},
 				aquisicao : {respostas: ["Decido considerando o que vejo, cheiro, sinto nas mãos",
 							"Decido baseado em minhas emoções, meu coração",
 							"Decido considerando argumentos lógicos",
@@ -161,22 +159,22 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
 							{texto: "A busca pela redução de resíduos me influencia a adotar um posicionamento favorável do meio ambiente nas decisões da lavoura", selecionado: null}],
 		  },
           items: [
-                    { id: 1, nome:"Produto 1", uri:"img/prod1.png", bloco:1, aluguel:7650, compra:90000},
-                    { id: 2, nome:"Produto 2", uri:"img/prod2.png", bloco:1, aluguel:7300, compra:89000},
-                    { id: 3, nome:"Produto 3", uri:"img/prod3.png", bloco:1, aluguel:6500, compra:81000},
-                    { id: 4, nome:"Produto 4",  uri:"img/prod4.png", bloco:1, aluguel:6750, compra:82000},
-                    { id: 5, nome:"Produto 5",  uri:"img/prod5.png", bloco:2, aluguel:6250, compra:79000},
-                    { id: 6, nome:"Produto 6",  uri:"img/prod6.png", bloco:2, aluguel:6850, compra:84000},
-                    { id: 7, nome:"Produto 7",  uri:"img/prod7.png", bloco:2, aluguel:6200, compra:77000},
-                    { id: 8, nome:"Produto 8",  uri:"img/prod8.png", bloco:2, aluguel:6400, compra:80000},
-                    { id: 9, nome:"Produto 9",  uri:"img/prod9.png", bloco:3, aluguel:7500, compra:95000},
-                    { id: 10, nome:"Produto 10",  uri:"img/prod10.png", bloco:3, aluguel:6600, compra:83000},
-                    { id: 11, nome:"Produto 11",  uri:"img/prod11.png", bloco:3, aluguel:7700, compra:92000},
-                    { id: 12, nome:"Produto 12",  uri:"img/prod12.png", bloco:3, aluguel:6100, compra:76000},
-                    { id: 13, nome:"Produto 13",  uri:"img/prod13.png", bloco:4, aluguel:6300, compra:78000},
-                    { id: 14, nome:"Produto 14",  uri:"img/prod14.png", bloco:4, aluguel:7900, compra:96000},
-                    { id: 15, nome:"Produto 15",  uri:"img/prod15.png", bloco:4, aluguel:6000, compra:75000},
-                    { id: 16, nome:"Produto 16",  uri:"img/prod16.png", bloco:4, aluguel:8000, compra:100000},
+                    { id: 1, nome:"Produto 1", uri:"img/prod1.png", bloco:1, aluguel:7700, compra:92000},
+                    { id: 2, nome:"Produto 2", uri:"img/prod2.png", bloco:1, aluguel:6400, compra:80000},
+                    { id: 3, nome:"Produto 3", uri:"img/prod3.png", bloco:1, aluguel:7300, compra:89000},
+                    { id: 4, nome:"Produto 4",  uri:"img/prod4.png", bloco:1, aluguel:6300, compra:78000},
+                    { id: 5, nome:"Produto 5",  uri:"img/prod5.png", bloco:2, aluguel:7500, compra:95000},
+                    { id: 6, nome:"Produto 6",  uri:"img/prod6.png", bloco:2, aluguel:6250, compra:79000},
+                    { id: 7, nome:"Produto 7",  uri:"img/prod7.png", bloco:2, aluguel:7650, compra:90000},
+                    { id: 8, nome:"Produto 8",  uri:"img/prod8.png", bloco:2, aluguel:6300, compra:78000},
+                    { id: 9, nome:"Produto 9",  uri:"img/prod9.png", bloco:3, aluguel:7900, compra:96000},
+                    { id: 10, nome:"Produto 10",  uri:"img/prod10.png", bloco:3, aluguel:6750, compra:82000},
+                    { id: 11, nome:"Produto 11",  uri:"img/prod11.png", bloco:3, aluguel:6200, compra:77000},
+                    { id: 12, nome:"Produto 12",  uri:"img/prod12.png", bloco:3, aluguel:6600, compra:83000},
+                    { id: 13, nome:"Produto 13",  uri:"img/prod13.png", bloco:4, aluguel:8000, compra:100000},
+                    { id: 14, nome:"Produto 14",  uri:"img/prod14.png", bloco:4, aluguel:6500, compra:81000},
+                    { id: 15, nome:"Produto 15",  uri:"img/prod15.png", bloco:4, aluguel:6850, compra:84000},
+                    { id: 16, nome:"Produto 16",  uri:"img/prod16.png", bloco:4, aluguel:6100, compra:76000},
                   ]                       
     };
     
@@ -202,7 +200,7 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
 	
 	$scope.vm.validateStep = function(step) {
 		$scope.validationOn = true;
-		/*
+		
 		if (step >= 2 && step <4) {
 			if ($scope.vm.renda_bruta.selecionado == null || $scope.vm.processos_secagem.selecionado == null || $scope.vm.selectedState == null || $scope.vm.selectedState == '' || $scope.vm.selectedCity == null || $scope.vm.selectedCity == ''){
 				return false;
@@ -212,10 +210,32 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
 				return false;
 			}
 		} else if (step >= 7) {
+			$scope.vm.produtos.caracterizacao.validations.decisoes = true;
+			$scope.vm.produtos.caracterizacao.validations.sustentabilidade = true;
+			
+			var shouldReturn = false;
 		
-		}*/
-		
-		
+			for (i = 0; i < $scope.vm.produtos.caracterizacao.decisoes.length; i++) {
+				if ($scope.vm.produtos.caracterizacao.decisoes[i]){
+					if ($scope.vm.produtos.caracterizacao.decisoes[i].selecionado == null){
+						$scope.vm.produtos.caracterizacao.validations.decisoes = false;
+						shouldReturn = true;
+					}
+				}
+			}
+			for (i = 0; i < $scope.vm.produtos.caracterizacao.decisoes.length; i++) {
+				if ($scope.vm.produtos.caracterizacao.sustentabilidade[i]){
+					if ($scope.vm.produtos.caracterizacao.sustentabilidade[i].selecionado == null){
+						$scope.vm.produtos.caracterizacao.validations.sustentabilidade = false;
+						shouldReturn = true;
+					}
+				}
+			}
+			if (shouldReturn) {
+				return;
+			}
+		}
+				
 		$scope.validationOn = false;
 		return true;
 	}
@@ -226,10 +246,18 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
             if ($scope.vm.currentStep == $scope.vm.steps[i].step) {
                 return $scope.vm.steps[i].template;
             }
-        }
+      }
+	  
+	  
+	  
     }
     
     $scope.vm.save = function() {
+		if (!$scope.vm.validateStep(7)){
+			console.log("error last page.");
+			return;
+		}
+	
 		var culturas = [];
 		
 		angular.forEach($scope.vm.culturas.respostas.selecionado, function(item){
@@ -264,6 +292,8 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
  		// download the data into a local object
 		var array = $firebaseArray(ref);
 		array.$add(json);
+		
+		document.getElementById("modalClick").click();
 	}  
 	
 	$scope.refresh = function () {

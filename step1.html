@@ -23,12 +23,20 @@
       </section>
     
       <!-- Form with input field examples, submit handled by controller function -->
-      <form role="form" name="form.test" id="form.test" novalidate class="col-sm-12">
+      <form role="form" name="form.test" id="form.test" novalidate>
+		
+		<div class="row">
+			<div class="col-sm-8">
+					<p class="lead text-justify" ng-repeat="paragrafo in vm.apresentacao">
+						{{paragrafo.name}}
+					</p>
+			</div>
+			<div class="col-sm-1">
+				<img ng-src="img/inicio.png">
+			</div>
+		</div>
         
-        
-        <p class="lead text-justify" ng-repeat="paragrafo in vm.apresentacao">
-            {{paragrafo.name}}
-        </p>
-       
+		
+	
       </form>
     </div>
