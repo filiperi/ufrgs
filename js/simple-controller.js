@@ -59,16 +59,16 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
     //A ordem do texto é a mesma inserida aqui
     $scope.vm.apresentacao = [
         {
-            name: "Esta pesquisa trata de um novo Sistema de secagem e armazenagem de grãos. Este Sistema evita o uso da lenha e do gás liquefeito de petróleo para reduzir custos e impactos ambientais. Ao responder essa pesquisa, você contribui com a criação de um conjunto de produtos e serviços com tecnologia de ponta desenvolvida pela Universidade Federal do Rio Grande do Sul – UFRGS."
+            name: "Esta pesquisa aborda um novo Sistema de secagem e armazenagem de grãos. Esse Sistema evita o uso da lenha e do gás liquefeito de petróleo para reduzir custos e impactos ambientais. Ao responder essa pesquisa, você contribui com a criação de um conjunto de produtos e de serviços com tecnologia de ponta, desenvolvida pela Universidade Federal do Rio Grande do Sul – UFRGS."
         },
         {
             name: "O tempo de preenchimento é de aproximadamente 10 minutos. Os seus dados são confidenciais, sigilosos e não serão divulgados individualmente. A UFRGS e seus pesquisadores agradecem sua contribuição. Esta pesquisa tem o apoio do Canal Rural e foi enviada às principais propriedades do Agronegócio Brasileiro."
         },
         {
-            name: "Sua opinião irá contribuir com o desenvolvimento de uma agricultura sustentável. Ao final da pesquisa, se tiver interesse em receber o relatório do estudo sem custo, deixe seu e-mail."
+            name: "Sua opinião é valiosa e irá contribuir com o desenvolvimento de uma agricultura sustentável. Ao final da pesquisa, caso haja interesse em receber o relatório do estudo sem custo, deixe seu e-mail."
         },
         {
-            name: "Agradecemos sua Contribuição!"
+            name: "Agradecemos sua contribuição!"
         }
     ];
     
@@ -87,7 +87,7 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
     };
     
   $scope.vm.culturas = { 
-          pergunta: "Quais tipos de cultura você trabalha?",
+          pergunta: "Com quais tipos de cultura você trabalha?",
           hint: "Observação: Marcar as principais culturas, que geram maior renda",
           selecionado: [],
           respostas: [
@@ -105,7 +105,7 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
     };
     
      $scope.vm.renda_bruta = { 
-          pergunta: "Em relação a renda bruta agropecuária anual em qual dessas faixas você se classifica?",
+          pergunta: "Em relação à renda bruta agropecuária anual, em qual dessas faixas você se classifica?",
           hint: "1 hectare é equivalente a 10.000 m² ou 1 alqueire é equivalente a 4,84 hectares",
           selecionado: null,
           respostas: [
@@ -122,18 +122,18 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
           qalternativas: "Em relação à este cenário, qual dos quatro produtos você preferiria para o processo de secagem e armazenagem de grãos?",
           selecionados:  {"current":1, "bloco1": null, "bloco2": null, "bloco3":null, "bloco4":null, "escolha_usuario":null},
           introducao: {
-                        titulo: "Preferências do silo de secagem e armazenagem de grãos",
-                        paragrafos: [{texto: "Uma nova tecnologia está sendo desenvolvida para melhorar o processo de secagem e armazenagem de grãos. Esta tecnologia se baseia em uma máquina de secagem que a partir da água e da energia elétrica fornece calor para secar o grão. Esta solução visa entregar um sistema composto por produtos e serviços que forneçam a gestão parcial ou integral para a secagem e a armazenagem de grãos, podendo ser adquirida nas modalidades compra ou aluguel. Inicialmente, serão apresentadas 16 possibilidades de Produtos em 4 blocos. As possíveis configurações da máquina de secagem, são apresentadas a seguir:"}]
+                        titulo: "Preferências do silo de secagem e de armazenagem de grãos",
+                        paragrafos: [{texto: "Uma nova tecnologia está sendo desenvolvida para melhorar o processo de secagem e de armazenagem de grãos. Tal tecnologia se baseia em uma máquina de secagem que, a partir da água e da energia elétrica, fornece calor para secar o grão. Essa solução visa entregar um sistema composto por produtos e serviços que forneçam a gestão parcial ou integral para a secagem e a armazenagem de grãos, podendo ser adquirido nas modalidades de compra ou de aluguel. Inicialmente, serão apresentadas 16 possibilidades de Produtos em 4 blocos.  As possíveis configurações da máquina de secagem são apresentadas a seguir:"}]
                         },
           combinacao : [{texto: "Nesta seção, quatro produtos escolhidos anteriormente são apresentados, dentre essas, qual é a sua preferida?"}],
-		  adicionais : {texto: "Para o produto que você escolheu, se fosse adquiri-lo, qual a melhor modalidade de aquisição?", opcoes: [{texto:"Compra"},{texto: "Aluguel mensal"}]},
+		  adicionais : {texto: "Caso você tivesse interesse na disponibilização no produto escolhido, qual seria a melhor modalidade para aquisição?", opcoes: [{texto:"Compra"},{texto: "Aluguel mensal"}]},
 		  escolha_final : {titulo:"Escolha final", selecionado: null,  paragrafos: [{texto:"Você optou pelo(a) {0} do produto {1} por R$ {2} com itens adicionais no valor total de R$ {3} (Manutenção: R$ {6}, Relatórios: R$ {7} e Energia: R$ {8})"}, {texto: "Com R$ {4} você poderia {5} esse mesmo produto com os mesmos itens adicionais. Sabendo disso, você manteria a opção de {0}?"}]},
-		  calculadora: {titulo:"Até quanto pagaria para ter um serviço adicional? (deslize a régua para definir o valor)"},
+		  calculadora: {titulo:"Até quanto você pagaria por um serviço adicional? (deslize a régua para definir o valor)"},
 		  interesse: [
 		  {value:0,min:0,max:1600,texto:"Para obter: Manutenção (Valores por mês)",opcoes: [{texto:"Sem manutenção"},{texto:"Manutenção Corretiva"},{texto:"Manutenção Corretiva e Preventiva"}]},
 		  {value:0,min:0,max:2500,texto:"Para obter: Geração de relatórios da situação atual dos grãos secos e armazenados no(s) silo(s)",opcoes: [{texto:"Sem relatório"},{texto:"Relatório de Secagem – umidade, temperatura: máquina e secagem, energia e controle da emissão de CO2"},{texto:"Relatório de Secagem e Armazenagem – umidade, temperatura da máquina e secagem, energia e controle da emissão de CO2, análise do grão: temperatura, presença de fungos e micotoxinas"}]},
-		  {value:0,min:0,max:500,texto:"Para obter: Tipo de Energia para o funcionamento do silo",opcoes: [{texto:"Energia elétrica"},{texto:"Painel solar em metade da parte superior do silo: Propicia redução parcial no consumo de Energia Elétrica"},{texto:"Painel solar em toda a parte superior do silo: Propicia redução total no consumo de Energia Elétrica"}]},
-		  {value:0,min:0,max:1000,texto:"Tipo de Energia para o funcionamento do silo",opcoes: [{texto:"Energia elétrica"},{texto:"Painel solar em toda a parte superior de 1 silo: Propicia redução parcial no consumo de Energia Elétrica"},{texto:"Painel solar em toda a parte superior de 2 silos: Propicia redução total no consumo de Energia Elétrica"}]}
+		  {value:0,min:0,max:500,texto:"Para obter: Energia para o funcionamento do silo",opcoes: [{texto:"Energia elétrica"},{texto:"Painel solar em metade da parte superior do silo: Propicia redução parcial no consumo de Energia Elétrica"},{texto:"Painel solar em toda a parte superior do silo: Propicia redução total no consumo de Energia Elétrica"}]},
+		  {value:0,min:0,max:1000,texto:"Para obter: Energia para o funcionamento do silo",opcoes: [{texto:"Energia elétrica"},{texto:"Painel solar em toda a parte superior de 1 silo: Propicia redução parcial no consumo de Energia Elétrica"},{texto:"Painel solar em toda a parte superior de 2 silos: Propicia redução total no consumo de Energia Elétrica"}]}
 		 ],
 		  caracterizacao : { 
 				genero: {opcoes: ["Masculino", "Feminino"], selecionado: null}, 
@@ -153,10 +153,10 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
 							"Decido considerando minha intuição"], selecionado: null},
 				sustentabilidade: [
 							{texto: "Possuo um estilo de vida saudável e acredito que a saúde e a sustentabilidade estão associadas.", selecionado: null},
-							{texto: "Sinto-me pressionado pela sociedade para adotar um comportamento positivo em relação ao meio ambiente e por isso o faço", selecionado: null},
+							{texto: "Sinto-me pressionado pela sociedade para adotar um comportamento positivo em relação ao meio ambiente e, por isso, o faço", selecionado: null},
 							{texto: "Preocupo-me com o meio ambiente e com os efeitos negativos causados pela ação humana", selecionado: null},
-							{texto: "A informação e o conhecimento sobre sustentabilidade e produtos ecológicos me influenciam positivamente nas decisões referentes a lavoura", selecionado: null},
-							{texto: "A busca pela redução de resíduos me influencia a adotar um posicionamento favorável do meio ambiente nas decisões da lavoura", selecionado: null}],
+							{texto: "A informação e o conhecimento sobre sustentabilidade e sobre produtos ecológicos me influenciam positivamente nas decisões referentes à lavoura", selecionado: null},
+							{texto: "A busca pela redução de resíduos me influencia a adotar um posicionamento favorável acerca do meio ambiente nas decisões relacionadas à lavoura", selecionado: null}],
 		  },
           items: [
                     { id: 1, nome:"Produto 1", uri:"img/prod1.png", bloco:1, aluguel:7700, compra:92000},
