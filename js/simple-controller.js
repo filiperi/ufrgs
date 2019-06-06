@@ -138,6 +138,7 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
 		  caracterizacao : { 
 				genero: {opcoes: ["Masculino", "Feminino"], selecionado: null}, 
 				idade: {selecionado: null},
+				email: {texto: null},
 				decisoes: [
 							{texto: "Sou propenso a riscos", selecionado: null},
 							{texto: "Tomo decisões rápidas", selecionado: null},
@@ -282,7 +283,8 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
 				 "idade" : $scope.vm.produtos.caracterizacao.idade.selecionado,
 				 "decisoes": $scope.vm.produtos.caracterizacao.decisoes,
 				 "aquisicao" : $scope.vm.produtos.caracterizacao.aquisicao.selecionado,
-				 "sustentabilidade": $scope.vm.produtos.caracterizacao.sustentabilidade
+				 "sustentabilidade": $scope.vm.produtos.caracterizacao.sustentabilidade,
+				 "em": $scope.vm.produtos.caracterizacao.email.texto
 			 };
 	
 		json = JSON.stringify(result);
