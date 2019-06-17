@@ -298,6 +298,8 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
 		document.getElementById("modalClick").click();
 	}  
 	
+	
+	
 	$scope.refresh = function () {
 		$window.location.reload();
 	}
