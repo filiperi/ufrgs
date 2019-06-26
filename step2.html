@@ -13,6 +13,10 @@
             <label class="checkbox-inline" ng-repeat="cultura in vm.culturas.respostas"> 
 				<input type="checkbox" checklist-model="vm.culturas.respostas.selecionado" checklist-value="cultura"> {{cultura.name}}
             </label>
+			
+			<div class="alert alert-danger" ng-if="(validationOn && vm.culturas.respostas.selecionado == null)">
+				<strong>Alerta!</strong> {{vm.erros.campo_requerido}}.
+			</div>
         </div>
         
         <div class="form-group">

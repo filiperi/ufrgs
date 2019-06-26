@@ -203,7 +203,7 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
 		$scope.validationOn = true;
 		
 		if (step >= 2 && step <4) {
-			if ($scope.vm.renda_bruta.selecionado == null || $scope.vm.processos_secagem.selecionado == null || $scope.vm.selectedState == null || $scope.vm.selectedState == '' || $scope.vm.selectedCity == null || $scope.vm.selectedCity == ''){
+			if ($scope.vm.renda_bruta.selecionado == null || $scope.vm.processos_secagem.selecionado == null || $scope.vm.selectedState == null || $scope.vm.selectedState == '' || $scope.vm.selectedCity == null || $scope.vm.selectedCity == '' || $scope.vm.culturas.respostas.selecionado == null){
 				return false;
 			}
 		} else if (step >= 4 && step <= 6) {
@@ -279,6 +279,7 @@ angular.module('app', ['br.cidades.estados','firebase', 'checklist-model'])
 				 "vp": $scope.vm.sum(),
 				 "pe": $scope.vm.resultado.produto_escolhido.id,
 				 "ef": $scope.vm.produtos.escolha_final.selecionado,
+				 "bl": $scope.vm.produtos.selecionados,
 				 "genero": $scope.vm.produtos.caracterizacao.genero.selecionado,
 				 "idade" : $scope.vm.produtos.caracterizacao.idade.selecionado,
 				 "decisoes": $scope.vm.produtos.caracterizacao.decisoes,
